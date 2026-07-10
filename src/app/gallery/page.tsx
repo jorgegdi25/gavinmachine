@@ -34,7 +34,7 @@ export default function GalleryPage() {
       </section>
 
       <div style={{ paddingTop: "2rem" }}>
-        <Gallery showAll={true} />
+        <Gallery />
       </div>
     </>
   );
