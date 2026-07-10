@@ -1,0 +1,176 @@
+"use client";
+
+import { useState } from "react";
+import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud } from "lucide-react";
+import styles from "./ContactForm.module.css";
+
+export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+    }, 1500);
+  };
+
+  return (
+    <section className={styles.contactSection} id="contact">
+      <div className={`container ${styles.container}`}>
+        
+        {/* Header matching the brand style */}
+        <div className={styles.header}>
+          <div className={styles.labelWrapper}>
+            <div className={styles.labelLine}></div>
+            <span className={styles.label}>GET A QUOTE</span>
+          </div>
+          <h2 className={styles.title}>
+            <span className={styles.titleDark}>Let's Build The Right</span><br />
+            <span className={styles.titleLight}>Solution For Your Project.</span>
+          </h2>
+          <p className={styles.subtitle}>
+            Most RFQs receive a response within 24 hours. We also offer long-term production scheduling with release programs of up to 12 months.
+          </p>
+        </div>
+
+        <div className={styles.contentGrid}>
+          {/* Left Column: Form Box */}
+          <div className={styles.formBox}>
+            {isSuccess ? (
+              <div className={styles.successMessage}>
+                <CheckCircle size={56} strokeWidth={1.5} color="var(--color-cta)" className={styles.successIcon} />
+                <h3 className={styles.successTitle}>Message Sent Successfully!</h3>
+                <p className={styles.successText}>Thank you for contacting Gavin Machine. We have received your request and will be in touch shortly.</p>
+                <button
+                  className={styles.resetBtn}
+                  onClick={() => setIsSuccess(false)}
+                >
+                  Send Another Request
+                </button>
+              </div>
+            ) : (
+              <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="name" className={styles.inputLabel}>Full Name *</label>
+                    <input type="text" id="name" name="name" className={styles.input} required />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="company" className={styles.inputLabel}>Company Name</label>
+                    <input type="text" id="company" name="company" className={styles.input} />
+                  </div>
+                </div>
+
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="email" className={styles.inputLabel}>Email Address *</label>
+                    <input type="email" id="email" name="email" className={styles.input} required />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="phone" className={styles.inputLabel}>Phone Number</label>
+                    <input type="tel" id="phone" name="phone" className={styles.input} />
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="message" className={styles.inputLabel}>Project Details *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    className={styles.textarea}
+                    required
+                    placeholder="Please describe your project, materials, quantities, etc."
+                  ></textarea>
+                </div>
+
+                {/* File Upload Restored */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="file" className={styles.inputLabel}>Upload Drawings/Specs (Optional)</label>
+                  <div className={styles.fileUploadBox}>
+                    <input type="file" id="file" name="file" className={styles.fileInput} accept=".pdf,.doc,.docx,.dwg,.dxf,.step,.stp" />
+                    <div className={styles.fileUploadContent}>
+                      <UploadCloud size={32} className={styles.uploadIcon} />
+                      <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
+                      <span className={styles.uploadTextSub}>PDF, DOC, DWG, DXF, STEP (Max 10MB)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? "SENDING..." : "REQUEST QUOTE"} <ArrowRight size={18} />
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Right Column: Info & Map Box */}
+          <div className={styles.infoBoxWrapper}>
+            <div className={styles.infoBox}>
+              <h3 className={styles.infoTitle}>Contact Information</h3>
+              <p className={styles.infoDesc}>Reach out directly to our engineering team.</p>
+              
+              <ul className={styles.infoList}>
+                <li>
+                  <div className={styles.iconCircle}>
+                    <MapPin size={20} strokeWidth={2} />
+                  </div>
+                  <div className={styles.infoText}>
+                    <strong>Address</strong>
+                    <span>10 Keith Way, Suite #4<br />Hingham, MA 02043</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.iconCircle}>
+                    <Phone size={20} strokeWidth={2} />
+                  </div>
+                  <div className={styles.infoText}>
+                    <strong>Phone</strong>
+                    <a href="tel:+16174628536">(617) 462-8536</a>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.iconCircle}>
+                    <Mail size={20} strokeWidth={2} />
+                  </div>
+                  <div className={styles.infoText}>
+                    <strong>Email</strong>
+                    <a href="mailto:info@gavinmachine.com">info@gavinmachine.com</a>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.iconCircle}>
+                    <Clock size={20} strokeWidth={2} />
+                  </div>
+                  <div className={styles.infoText}>
+                    <strong>Hours</strong>
+                    <span>Mon - Fri: 7:00 AM - 4:30 PM</span>
+                  </div>
+                </li>
+              </ul>
+
+              <div className={styles.mapContainer}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2956.8860714154946!2d-70.9068045233159!3d42.1738739712076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e49fbdb4f4bf51%3A0x6b4f707f18fc4a3a!2sGavin%20Machine!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Gavin Machine Location"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}

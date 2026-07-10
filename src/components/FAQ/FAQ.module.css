@@ -1,0 +1,121 @@
+.faqSection {
+  background-color: var(--color-white);
+  padding: 6rem 0 8rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 900px !important; /* Keep it narrow for better readability */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.labelLine {
+  width: 30px;
+  height: 1px;
+  background-color: var(--color-text-secondary);
+}
+
+.title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800; /* Robust font weight */
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.titleDark {
+  color: var(--color-dark);
+}
+
+.titleLight {
+  color: var(--color-cta);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.item {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-dark);
+  transition: color 0.2s ease;
+}
+
+.question:hover {
+  color: var(--color-cta);
+}
+
+.chevron {
+  color: var(--color-text-secondary);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.open .question {
+  color: var(--color-cta);
+}
+
+.open .chevron {
+  transform: rotate(180deg);
+  color: var(--color-cta);
+}
+
+.answerWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.open .answerWrapper {
+  grid-template-rows: 1fr;
+}
+
+.answer {
+  overflow: hidden;
+}
+
+.answer p {
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}

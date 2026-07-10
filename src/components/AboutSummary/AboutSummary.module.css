@@ -1,0 +1,325 @@
+.aboutSection {
+  background-color: var(--color-white);
+  padding-top: 5rem;
+  overflow: hidden;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+  .mainContainer {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 4rem;
+  }
+}
+
+/* Left Column: Image */
+.imageColumn {
+  flex: 0 0 100%;
+}
+
+@media (min-width: 992px) {
+  .imageColumn {
+    flex: 0 0 40%;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* Image lives on a pseudo-element so it can zoom on hover without
+   stretching the experience box / button that sit on top of it. */
+.imageWrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/about-summary-img.png');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.imageWrapper:hover::before {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageWrapper:hover::before {
+    transform: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .imageWrapper {
+    height: 100%;
+    min-height: 600px;
+  }
+}
+
+.experienceBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(5, 25, 51, 0.9); /* Dark blue with opacity */
+  backdrop-filter: blur(5px);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--color-white);
+  border-top-right-radius: var(--radius-md);
+}
+
+.expNumber {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #3b82f6; /* Lighter blue to pop */
+  margin-bottom: 0.5rem;
+}
+
+.expTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.expSubtitle {
+  font-size: 0.85rem;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Button on Image */
+.imageAction {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10;
+}
+
+.imageBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.imageBtn:hover {
+  background-color: var(--color-cta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+}
+
+/* Right Column: Text */
+.textColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.labelLine {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-red);
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-cta);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.titleDark {
+  color: var(--color-dark);
+}
+
+.titleLight {
+  color: var(--color-cta);
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 90%;
+}
+
+/* Features Grid */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+}
+
+@media (min-width: 576px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .featuresGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.featureIcon {
+  color: var(--color-cta);
+  margin-bottom: 1rem;
+  background: rgba(37, 99, 235, 0.05);
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.featureDesc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Bottom Stats Banner */
+.bottomBanner {
+  background-color: #f4f7f9; /* Light grey/blue from mockup */
+  /* Subtle technical blueprint grid to reinforce the precision-machining theme */
+  background-image:
+    linear-gradient(rgba(15, 67, 138, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 67, 138, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  padding: 3rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 576px) {
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .statsContainer {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .statBox:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(0,0,0,0.1);
+  }
+}
+
+.statBig {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-cta);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.statMedium {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.statSmall {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}

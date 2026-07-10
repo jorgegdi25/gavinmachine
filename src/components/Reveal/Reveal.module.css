@@ -1,0 +1,62 @@
+.reveal {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.up {
+  transform: translateY(32px);
+}
+
+.left {
+  transform: translateX(-40px);
+}
+
+.right {
+  transform: translateX(40px);
+}
+
+.none {
+  transform: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ---- Stagger mode: the container stays put, its direct children cascade in ---- */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger.visible > *:nth-child(2) { transition-delay: 80ms; }
+.stagger.visible > *:nth-child(3) { transition-delay: 160ms; }
+.stagger.visible > *:nth-child(4) { transition-delay: 240ms; }
+.stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
+.stagger.visible > *:nth-child(6) { transition-delay: 400ms; }
+.stagger.visible > *:nth-child(7) { transition-delay: 480ms; }
+.stagger.visible > *:nth-child(8) { transition-delay: 560ms; }
+.stagger.visible > *:nth-child(9) { transition-delay: 640ms; }
+.stagger.visible > *:nth-child(10) { transition-delay: 720ms; }
+.stagger.visible > *:nth-child(n + 11) { transition-delay: 800ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

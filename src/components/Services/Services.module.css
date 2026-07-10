@@ -1,0 +1,309 @@
+.servicesSection {
+  background-color: #f8fafc; /* Keep consistency with WhyChooseUs, or white if needed. Actually mockup looks white */
+  background-color: var(--color-white);
+  padding: 6rem 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.labelLine {
+  width: 30px;
+  height: 2px;
+  background-color: var(--color-red);
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-cta);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.titleDark {
+  color: var(--color-dark);
+}
+
+.titleLight {
+  color: var(--color-cta);
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Slider Wrapper */
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Arrow Buttons */
+.sliderArrow {
+  display: none;
+  background-color: var(--color-white);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: var(--color-dark);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all var(--transition-fast);
+}
+
+.sliderArrow:hover {
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  border-color: var(--color-cta);
+}
+
+@media (min-width: 1024px) {
+  .sliderArrow {
+    display: flex;
+  }
+}
+
+.arrowLeft {
+  left: -24px;
+}
+
+.arrowRight {
+  right: -24px;
+}
+
+/* Grid / Scroll Container */
+.servicesGrid {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 2rem;
+  padding: 1rem 0 2rem; /* padding for box shadows */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  width: 100%;
+}
+
+.servicesGrid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Service Card */
+.serviceCard {
+  background-color: #0c1a2d; /* Dark blue background from mockup */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  
+  /* Slider sizing */
+  flex: 0 0 85%;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 768px) {
+  .serviceCard {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .serviceCard {
+    flex: 0 0 calc(33.333% - 1.33rem);
+  }
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.serviceCard:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.iconBox {
+  position: absolute;
+  bottom: -24px;
+  left: 2rem;
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.cardContent {
+  padding: 3.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cardTitle {
+  color: var(--color-white);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cardDesc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-cta);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color var(--transition-fast), gap var(--transition-fast);
+}
+
+.cardLink:hover {
+  color: var(--color-white);
+  gap: 0.8rem;
+}
+
+/* Bottom CTA Banner */
+.ctaBanner {
+  background-color: #051933;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  border-radius: var(--radius-md);
+  padding: 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  margin-top: 2rem;
+}
+
+@media (min-width: 992px) {
+  .ctaBanner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.ctaLeft {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.ctaAccentLine {
+  width: 4px;
+  background-color: var(--color-cta);
+  border-radius: 2px;
+}
+
+.ctaTextGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.ctaTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.ctaSubtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 0.9rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  background-color: rgba(255,255,255,0.1);
+  border-color: var(--color-white);
+}

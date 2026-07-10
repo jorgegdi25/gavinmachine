@@ -1,0 +1,296 @@
+.industriesSection {
+  position: relative;
+  background-color: var(--color-white);
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+/* Background layers for the fade effect */
+.bgWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 500px; /* Keep it constrained to top header area */
+  z-index: 0;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/industries-bg.png');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  /* Soften the photo so it reads as a backdrop, not a foreground block */
+  opacity: 0.55;
+  /* Parallax: pin the image to the viewport so it scrolls slower than the content */
+  background-attachment: fixed;
+}
+
+@media (max-width: 991px), (hover: none) {
+  .bgImage {
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgImage {
+    background-attachment: scroll;
+  }
+}
+
+.bgGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Layer 1: white veil left→right that never goes fully transparent (keeps the
+     photo subtle even on the right). Layer 2: fade the photo out toward the bottom
+     so it dissolves into the section instead of cutting off hard. */
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.97) 40%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.45) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 1) 100%);
+}
+
+@media (max-width: 991px) {
+  .bgGradient {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 1) 100%);
+  }
+}
+
+/* Main Container */
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Header Section */
+.header {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.labelLine {
+  width: 30px;
+  height: 2px;
+  background-color: var(--color-red);
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-cta);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.titleDark {
+  color: var(--color-dark);
+}
+
+.titleLight {
+  color: var(--color-cta);
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* 8 Cards Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(15, 67, 138, 0.15);
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 140px;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.iconBox {
+  position: absolute;
+  bottom: -20px;
+  left: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.cardContent {
+  padding: 2.5rem 1.5rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  color: var(--color-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.cardDesc {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Bottom CTA Banner */
+.ctaBanner {
+  background-color: #051933;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+  border-radius: var(--radius-md);
+  padding: 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  margin-top: 2rem;
+}
+
+@media (min-width: 992px) {
+  .ctaBanner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.ctaLeft {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.ctaAccentLine {
+  width: 4px;
+  background-color: var(--color-cta);
+  border-radius: 2px;
+}
+
+.ctaTextGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.ctaTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.ctaSubtitle {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 0.9rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  background-color: rgba(255,255,255,0.1);
+  border-color: var(--color-white);
+}

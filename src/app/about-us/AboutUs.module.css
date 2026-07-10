@@ -1,0 +1,319 @@
+/* 1. Hero Section */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-dark);
+  background-image: url('/images/cnc_hero_bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: 8rem 0 4rem;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10, 38, 71, 0.9) 0%,
+    rgba(10, 38, 71, 0.7) 50%,
+    rgba(10, 38, 71, 0.4) 100%
+  );
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: 0;
+  text-align: left;
+}
+
+.label {
+  font-family: var(--font-nav);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-cta);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.heroTitleHighlight {
+  color: #5c9df5; /* A bright, readable blue on dark background */
+}
+
+.divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-cta);
+  margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* 2. About Section */
+.aboutSection {
+  padding: 6rem 0;
+  background-color: var(--color-white);
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .aboutGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.aboutContent h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.aboutContent p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.btnSolid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  padding: 0.8rem 1.5rem;
+  font-family: var(--font-nav);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+}
+
+.btnSolid:hover {
+  background-color: #154a8a; /* Darker CTA */
+}
+
+/* 3. Stats / Features Banner */
+.statsContainer {
+  background-color: #f4f7fb; /* Very light blue-grey */
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .statsContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .statItem:not(:last-child) {
+    border-right: 1px solid rgba(10, 38, 71, 0.1);
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.statIcon {
+  color: var(--color-cta);
+  margin-bottom: 1rem;
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+/* 4. History Section */
+.historySection {
+  padding: 6rem 0;
+  background-color: var(--color-white);
+}
+
+.historyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 992px) {
+  .historyGrid {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+.historyContent h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.historyContent p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 23px; /* Centers with the 48px circle (24 - 1px width) */
+  width: 2px;
+  background-color: #e2e8f0;
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 3rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineIcon {
+  position: absolute;
+  left: -2rem; /* Pulls it over the line */
+  top: 0;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-cta);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  z-index: 2;
+  font-weight: bold;
+  font-size: 0.85rem;
+  box-shadow: 0 0 0 4px var(--color-white);
+}
+
+.timelineItem h3 {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  padding-top: 0.3rem; /* Align text with icon */
+}
+
+.timelineItem p {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+/* 5. CTA Banner */
+.ctaBanner {
+  background-color: var(--color-dark);
+  padding: 4rem 0;
+}
+
+.ctaContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .ctaContent {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.ctaTextWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: var(--color-white);
+}
+
+.ctaIcon {
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+
+.ctaTextWrapper h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.ctaTextWrapper p {
+  color: rgba(255,255,255,0.7);
+  font-size: 1.1rem;
+}
