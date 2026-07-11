@@ -59,8 +59,8 @@ export default function Hero() {
         </div>
         <div className={styles.credDivider} />
         <div className={styles.credItem}>
-          <span className={styles.credNumber}>ISO</span>
-          <span className={styles.credLabel}>9001 Compliant</span>
+          <span className={styles.credNumber}>QC</span>
+          <span className={styles.credLabel}>Rigorous Quality Standards</span>
         </div>
       </div>
 

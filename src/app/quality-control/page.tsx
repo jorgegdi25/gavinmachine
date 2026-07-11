@@ -10,7 +10,7 @@ import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
   title: "Quality Control & Inspection | Gavin Machine",
-  description: "Advanced precision measurement and quality control for CNC machining. ISO-compliant inspection with Coordinate Measuring Machines (CMM) and precision gauges.",
+  description: "Advanced precision measurement and quality control for CNC machining. Rigorous inspection with Coordinate Measuring Machines (CMM) and precision gauges.",
 };
 
 export default function QualityControl() {

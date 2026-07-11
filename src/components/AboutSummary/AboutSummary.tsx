@@ -112,9 +112,9 @@ export default function AboutSummary() {
           </Reveal>
 
           <Reveal className={styles.statBox} delay={300}>
-            <span className={styles.statBig}>ISO</span>
-            <span className={styles.statMedium}>9001 COMPLIANT</span>
-            <span className={styles.statSmall}>Strict quality standards</span>
+            <span className={styles.statBig}>QC</span>
+            <span className={styles.statMedium}>AT EVERY STEP</span>
+            <span className={styles.statSmall}>Rigorous quality standards</span>
           </Reveal>
         </div>
       </div>
