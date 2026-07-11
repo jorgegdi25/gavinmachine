@@ -1,6 +1,7 @@
 import styles from "./Hero.module.css";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import CountUp from "@/components/CountUp/CountUp";
 
 export default function Hero() {
   return (
@@ -29,7 +30,7 @@ export default function Hero() {
           </h1>
           <div className={styles.divider} />
           <p className={styles.subtitle}>
-            From prototype to full production — CNC milling, turning &amp; grinding.
+            Delivering high-quality machined components with accuracy, consistency, and on-time performance.
           </p>
           <div className={styles.actions}>
             <Link href="/get-a-quote" className="btn btn--primary">
@@ -39,6 +40,27 @@ export default function Hero() {
               OUR CAPABILITIES <ArrowRight size={18} />
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Floating credentials card: balances the empty lower-right of the hero
+          with a compact, glassmorphism-style trust signal. */}
+      <div className={styles.credCard}>
+        <div className={styles.credItem}>
+          <span className={styles.credNumber}>
+            <CountUp value={30} suffix="+" />
+          </span>
+          <span className={styles.credLabel}>Years of Precision</span>
+        </div>
+        <div className={styles.credDivider} />
+        <div className={styles.credItem}>
+          <span className={styles.credNumber}>1990</span>
+          <span className={styles.credLabel}>Est. in Hingham, MA</span>
+        </div>
+        <div className={styles.credDivider} />
+        <div className={styles.credItem}>
+          <span className={styles.credNumber}>ISO</span>
+          <span className={styles.credLabel}>9001 Compliant</span>
         </div>
       </div>
 

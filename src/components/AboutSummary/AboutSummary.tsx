@@ -47,7 +47,7 @@ export default function AboutSummary() {
               Founded in 1990, Gavin Machine is a family-owned precision machining company based in Hingham, Massachusetts.
             </p>
             <p>
-              For over three decades, we've delivered high-quality components and dependable service to customers across aerospace, medical, defense, industrial, and more.
+              At Gavin Machine, we specialize in CNC milling and CNC turning services for customers who demand precision manufacturing and dependable results. From prototypes to production runs, our team is committed to producing quality parts that meet the most demanding specifications.
             </p>
             <p>
               Our mission is simple: deliver accurate, reliable, and cost-effective machined parts while building long-term partnerships through quality, service, and integrity.
