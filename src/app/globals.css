@@ -179,6 +179,11 @@ p {
   box-shadow: var(--shadow-md);
 }
 
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
 .btn--outline {
   background-color: transparent;
   color: var(--color-white);
@@ -191,6 +196,10 @@ p {
   transform: translateY(-2px);
 }
 
+.btn--outline:active {
+  transform: translateY(0);
+}
+
 .btn--outline-dark {
   background-color: transparent;
   color: var(--color-primary);
@@ -201,6 +210,10 @@ p {
   background-color: var(--color-primary);
   color: var(--color-white);
   transform: translateY(-2px);
+}
+
+.btn--outline-dark:active {
+  transform: translateY(0);
 }
 
 /* ---------- Animations ---------- */

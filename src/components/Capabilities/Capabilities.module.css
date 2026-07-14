@@ -106,6 +106,10 @@
   background-color: rgba(0,0,0,0.02);
 }
 
+.tabBtn:active {
+  transform: scale(0.98);
+}
+
 .activeTabBtn {
   background-color: var(--color-cta);
   color: var(--color-white);
@@ -116,6 +120,10 @@
 .activeTabBtn:hover {
   background-color: var(--color-cta-hover);
   border-color: var(--color-cta-hover);
+}
+
+.activeTabBtn:active {
+  transform: scale(0.98);
 }
 
 /* Main Content Box */
@@ -255,6 +263,10 @@
 .learnMoreBtn:hover {
   background-color: var(--color-dark);
   color: var(--color-white);
+}
+
+.learnMoreBtn:active {
+  transform: translateY(2px);
 }
 
 /* Bottom Stats Banner */

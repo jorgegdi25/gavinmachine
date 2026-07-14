@@ -86,6 +86,10 @@
   transform: scale(1.05);
 }
 
+.gridItem:active .image {
+  transform: scale(1.02);
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -148,6 +152,10 @@
   opacity: 0.5;
 }
 
+.closeBtn:active {
+  transform: scale(0.9);
+}
+
 .navBtn {
   background: none;
   border: none;
@@ -160,6 +168,10 @@
 
 .navBtn:hover {
   opacity: 0.5;
+}
+
+.navBtn:active {
+  transform: scale(0.9);
 }
 
 .lightboxContent {
