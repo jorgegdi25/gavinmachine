@@ -58,13 +58,28 @@ export default function Navbar() {
     }
   }, [menuOpen]);
 
+  const handleParentLinkClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
+    if (link.dropdown && window.innerWidth <= 1024) {
+      e.preventDefault();
+      setOpenDropdown(openDropdown === link.label ? null : link.label);
+    } else {
+      setMenuOpen(false);
+      setOpenDropdown(null);
+    }
+  };
+
+  const handleSublinkClick = () => {
+    setMenuOpen(false);
+    setOpenDropdown(null);
+  };
+
   return (
     <header
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
       id="navbar"
     >
       <div className={styles.container}>
-        <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
+        <Link href="/" className={styles.logo} onClick={() => { setMenuOpen(false); setOpenDropdown(null); }}>
           <img
             src={media.logoGavin}
             alt="Gavin Machine Logo"
@@ -85,7 +100,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       className={styles.navLink}
-                      onClick={() => !link.dropdown && setMenuOpen(false)}
+                      onClick={(e) => handleParentLinkClick(e, link)}
                     >
                       {link.label}
                     </Link>
@@ -110,7 +125,7 @@ export default function Navbar() {
                           <Link
                             href={sublink.href}
                             className={styles.dropdownLink}
-                            onClick={() => setMenuOpen(false)}
+                            onClick={handleSublinkClick}
                           >
                             {sublink.label}
                           </Link>
@@ -125,7 +140,7 @@ export default function Navbar() {
           <Link
             href="/get-a-quote"
             className={`btn btn--primary ${styles.navCta}`}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => { setMenuOpen(false); setOpenDropdown(null); }}
           >
             Request a Quote
           </Link>

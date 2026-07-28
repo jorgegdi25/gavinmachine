@@ -138,53 +138,55 @@
   transition: transform var(--transition-fast);
 }
 
-/* Desktop: chevron lives inline next to the label, toggle button is invisible/inert */
-.hasDropdown .dropdownToggle {
-  display: flex;
-  pointer-events: none;
-  padding: 0.5rem 0.85rem 0.5rem 0;
-}
+/* Desktop Dropdown Hover */
+@media (min-width: 1025px) {
+  .hasDropdown .dropdownToggle {
+    display: flex;
+    pointer-events: none;
+    padding: 0.5rem 0.85rem 0.5rem 0;
+  }
 
-.hasDropdown:hover .dropdownIcon {
-  transform: rotate(180deg);
-}
+  .hasDropdown:hover .dropdownIcon {
+    transform: rotate(180deg);
+  }
 
-.dropdownMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--color-white);
-  min-width: 220px;
-  border-radius: var(--radius-md);
-  padding: var(--space-xs) 0;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all var(--transition-fast);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--color-border);
-}
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-white);
+    min-width: 230px;
+    border-radius: var(--radius-md);
+    padding: var(--space-xs) 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+  }
 
-.hasDropdown:hover .dropdownMenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+  .hasDropdown:hover .dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
-.dropdownLink {
-  color: var(--color-text);
-  padding: var(--space-sm) var(--space-md);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all var(--transition-fast);
-}
+  .dropdownLink {
+    color: var(--color-text);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
 
-.dropdownLink:hover {
-  background: rgba(0, 0, 0, 0.03);
-  color: var(--color-primary);
-  padding-left: calc(var(--space-md) + 4px);
+  .dropdownLink:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--color-cta);
+    padding-left: calc(var(--space-md) + 4px);
+  }
 }
 
 /* Mobile */
