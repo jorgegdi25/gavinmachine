@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Factory, Target, ClipboardCheck, Settings, LineChart, Users, Clock } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export default function AboutUs() {
   return (
     <>
       {/* 1. Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=2000&q=80')", backgroundColor: "#0c1a2d" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.heroBackground})`, backgroundColor: "#0c1a2d" }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>
@@ -62,8 +63,8 @@ export default function AboutUs() {
           <div className={styles.equipmentContainer}>
             <div className={styles.equipmentImageWrapper}>
               <img 
-                src="https://images.unsplash.com/photo-1565439390238-6f6874411135?w=1000&q=80" 
-                alt="Gavin Machine Shop Floor" 
+                src={media.aboutUsFacility} 
+                alt="Gavin Machine Precision CNC Machining" 
                 className={styles.equipmentImage}
               />
             </div>

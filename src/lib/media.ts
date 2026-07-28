@@ -35,8 +35,11 @@ import aboutSlide02 from "../../public/images/about-slider/about-slide-02.webp";
 import aboutSlide03 from "../../public/images/about-slider/about-slide-03.webp";
 import aboutSlide04 from "../../public/images/about-slider/about-slide-04.webp";
 
+import aboutUsFacility from "../../public/images/about-us-facility.webp";
+
 export const media = {
   aboutSummary: aboutSummary.src,
+  aboutUsFacility: aboutUsFacility.src,
   automation: automation.src,
   biomedical: biomedical.src,
   cncHero: cncHero.src,
