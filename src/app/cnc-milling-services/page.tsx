@@ -11,7 +11,7 @@ import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
   title: "CNC Milling Services | Precision Machining Massachusetts",
-  description: "Advanced CNC milling services in Massachusetts, featuring 3, 4, and 5-axis capabilities. Programmed with Mastercam 2024 for complex precision components.",
+  description: "Advanced CNC milling services in Massachusetts, featuring 3, 4, and 5-axis capabilities. Programmed with Mastercam for complex precision components.",
 };
 
 export default function CNCMilling() {
@@ -91,7 +91,7 @@ export default function CNCMilling() {
                 <h3 className={styles.capTitle}>CAD/CAM Programming</h3>
               </div>
               <p className={styles.capDesc}>
-                We use Mastercam 2024, one of the industry's leading CAD/CAM platforms for CNC milling and turning. Capabilities include:
+                We use Mastercam, one of the industry's leading CAD/CAM platforms for CNC milling and turning. Capabilities include:
               </p>
               <ul className={styles.capList}>
                 <li className={styles.capListItem}>3, 4, and 5-Axis CNC Programming</li>
