@@ -1,7 +1,18 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Wrench, Factory, Layers, Box, ArrowRight, Check } from "lucide-react";
+import { Wrench, Factory, Layers, Box, ArrowRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import Reveal from "@/components/Reveal/Reveal";
+import { media } from "@/lib/media";
 import styles from "./AboutSummary.module.css";
+
+const slideImages = [
+  { src: media.aboutSlide01, alt: "Lagun Milling Machine Operation" },
+  { src: media.aboutSlide02, alt: "CNC Machining Facility Shop Floor" },
+  { src: media.aboutSlide03, alt: "Haas Precision CNC Lathe Turning" },
+  { src: media.aboutSlide04, alt: "Mazak VTC CNC Milling Station" },
+];
 
 function CaliperIcon() {
   return (
@@ -28,21 +39,85 @@ function CaliperIcon() {
 }
 
 export default function AboutSummary() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slideImages.length) % slideImages.length);
+  };
+
   return (
     <section className={styles.aboutSection} id="about">
       {/* Main Content Area */}
       <div className={`container ${styles.mainContainer}`}>
         
-        {/* Left Column: Image with Experience Box */}
+        {/* Left Column: Image Slider with Experience Box */}
         <div className={styles.imageColumn}>
-          <div className={styles.imageWrapper}>
+          <div 
+            className={styles.imageWrapper}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Slides Background Container */}
+            <div className={styles.slidesContainer}>
+              {slideImages.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`${styles.slide} ${index === currentSlide ? styles.activeSlide : ""}`}
+                  style={{ backgroundImage: `url(${slide.src})` }}
+                  aria-label={slide.alt}
+                />
+              ))}
+            </div>
+
+            {/* Slide Navigation Arrows */}
+            <button 
+              className={`${styles.slideNav} ${styles.slideNavPrev}`} 
+              onClick={prevSlide} 
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button 
+              className={`${styles.slideNav} ${styles.slideNavNext}`} 
+              onClick={nextSlide} 
+              aria-label="Next image"
+            >
+              <ChevronRight size={22} />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className={styles.dotsContainer}>
+              {slideImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ""}`}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Experience Box Overlay */}
             <div className={styles.experienceBox}>
               <span className={styles.expNumber}>1990</span>
               <span className={styles.expTitle}>30+ Years of<br />Precision Manufacturing</span>
               <span className={styles.expSubtitle}>In Massachusetts</span>
             </div>
             
-            {/* New Button over the image */}
+            {/* Button over the image */}
             <div className={styles.imageAction}>
               <Link href="/about-us" className={styles.imageBtn}>
                 MORE ABOUT US <ArrowRight size={18} />
@@ -144,3 +219,4 @@ export default function AboutSummary() {
     </section>
   );
 }
+

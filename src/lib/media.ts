@@ -30,6 +30,11 @@ import gallery11 from "../../public/images/gallery/gallery-11.webp";
 import gallery12 from "../../public/images/gallery/gallery-12.webp";
 import gallery13 from "../../public/images/gallery/gallery-13.webp";
 
+import aboutSlide01 from "../../public/images/about-slider/about-slide-01.webp";
+import aboutSlide02 from "../../public/images/about-slider/about-slide-02.webp";
+import aboutSlide03 from "../../public/images/about-slider/about-slide-03.webp";
+import aboutSlide04 from "../../public/images/about-slider/about-slide-04.webp";
+
 export const media = {
   aboutSummary: aboutSummary.src,
   automation: automation.src,
@@ -61,5 +66,9 @@ export const media = {
   gallery11: gallery11.src,
   gallery12: gallery12.src,
   gallery13: gallery13.src,
+  aboutSlide01: aboutSlide01.src,
+  aboutSlide02: aboutSlide02.src,
+  aboutSlide03: aboutSlide03.src,
+  aboutSlide04: aboutSlide04.src,
 } as const;
 
