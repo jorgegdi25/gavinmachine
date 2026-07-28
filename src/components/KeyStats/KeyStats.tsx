@@ -21,7 +21,7 @@ const stats = [
   {
     icon: <Factory size={34} strokeWidth={1.5} />,
     title: "PROTOTYPE TO PRODUCTION",
-    subtitle: "Prototype to Production Manufacturing",
+    subtitle: "Manufacturing",
   },
 ];
 
