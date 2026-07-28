@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Gallery from "@/components/Gallery/Gallery";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export default function GalleryPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/hero-bg.png')", backgroundColor: "#0c1a2d" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.heroBackground})`, backgroundColor: "#0c1a2d" }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>

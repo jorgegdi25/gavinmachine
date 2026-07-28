@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Cpu, HeartPulse, Radio, Microscope, Bot, Wind, CircuitBoard, Shield, ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal/Reveal";
+import { media } from "@/lib/media";
 import styles from "./Industries.module.css";
 
 export default function Industries() {
@@ -40,7 +41,7 @@ export default function Industries() {
           {/* Card 1 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/ind-semiconductor.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.semiconductor})` }}></div>
               <div className={styles.iconBox}>
                 <Cpu size={24} strokeWidth={1.5} />
               </div>
@@ -56,7 +57,7 @@ export default function Industries() {
           {/* Card 2 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/ind-biomedical.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.biomedical})` }}></div>
               <div className={styles.iconBox}>
                 <HeartPulse size={24} strokeWidth={1.5} />
               </div>
@@ -72,7 +73,7 @@ export default function Industries() {
           {/* Card 3 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/ind-microwave.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.microwave})` }}></div>
               <div className={styles.iconBox}>
                 <Radio size={24} strokeWidth={1.5} />
               </div>
@@ -88,7 +89,7 @@ export default function Industries() {
           {/* Card 4 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/ind-scientific.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.scientific})` }}></div>
               <div className={styles.iconBox}>
                 <Microscope size={24} strokeWidth={1.5} />
               </div>
@@ -104,7 +105,7 @@ export default function Industries() {
           {/* Card 5 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/ind-automation.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.automation})` }}></div>
               <div className={styles.iconBox}>
                 <Bot size={24} strokeWidth={1.5} />
               </div>
@@ -120,7 +121,7 @@ export default function Industries() {
           {/* Card 6 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/cnc-turning.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.cncTurning})` }}></div>
               <div className={styles.iconBox}>
                 <Wind size={24} strokeWidth={1.5} />
               </div>
@@ -136,7 +137,7 @@ export default function Industries() {
           {/* Card 7 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/service3.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.service3})` }}></div>
               <div className={styles.iconBox}>
                 <CircuitBoard size={24} strokeWidth={1.5} />
               </div>
@@ -152,7 +153,7 @@ export default function Industries() {
           {/* Card 8 */}
           <div className={styles.card}>
             <div className={styles.cardImageWrapper}>
-              <div className={styles.cardImage} style={{ backgroundImage: "url('/images/hero-bg.png')" }}></div>
+              <div className={styles.cardImage} style={{ backgroundImage: `url(${media.heroBackground})` }}></div>
               <div className={styles.iconBox}>
                 <Shield size={24} strokeWidth={1.5} />
               </div>

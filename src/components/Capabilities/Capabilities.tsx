@@ -13,6 +13,7 @@ import {
   Settings,
   Wrench,
 } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "./Capabilities.module.css";
 
 type CapabilitySection = {
@@ -34,7 +35,7 @@ const tabsData: CapabilityTab[] = [
     id: "milling",
     label: "CNC Milling Capabilities",
     icon: <Wrench size={24} strokeWidth={1.5} />,
-    image: "/images/service1.png",
+    image: media.service1,
     sections: [
       {
         title: "CNC Milling & Turning Capabilities",
@@ -64,7 +65,7 @@ const tabsData: CapabilityTab[] = [
     id: "turning",
     label: "CNC Turning Capabilities",
     icon: <RotateCcw size={24} strokeWidth={1.5} />,
-    image: "/images/cnc-turning.png",
+    image: media.cncTurning,
     sections: [
       {
         title: "CNC Turning",
@@ -95,7 +96,7 @@ const tabsData: CapabilityTab[] = [
     id: "quality",
     label: "Quality Assurance & Inspection",
     icon: <Microscope size={24} strokeWidth={1.5} />,
-    image: "/images/service2.png",
+    image: media.service2,
     sections: [
       {
         title: "Quality Assurance & Inspection",
@@ -157,7 +158,7 @@ const tabsData: CapabilityTab[] = [
     id: "engineering",
     label: "Engineering & CAD/CAM",
     icon: <Ruler size={24} strokeWidth={1.5} />,
-    image: "/images/service3.png",
+    image: media.service3,
     sections: [
       {
         title: "Engineering & Programming Capabilities",
@@ -226,7 +227,7 @@ const tabsData: CapabilityTab[] = [
     id: "secondary",
     label: "Secondary Services",
     icon: <Settings size={24} strokeWidth={1.5} />,
-    image: "/images/about-summary-img.png",
+    image: media.aboutSummary,
     sections: [
       {
         title: "Secondary Services",
@@ -243,7 +244,7 @@ const tabsData: CapabilityTab[] = [
     id: "equipment",
     label: "Equipment List",
     icon: <Factory size={24} strokeWidth={1.5} />,
-    image: "/images/hero-bg.png",
+    image: media.heroBackground,
     sections: [
       {
         title: "Milling Centers",

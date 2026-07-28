@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { media } from "@/lib/media";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -11,7 +12,7 @@ export default function Footer() {
           <div className={styles.brandInfo}>
             <Link href="/" className={styles.logo}>
               <img
-                src="/logo-footer.png"
+                src={media.logoFooter}
                 alt="Gavin Machine Logo"
                 className={styles.logoImage}
               />

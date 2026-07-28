@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "./Services.module.css";
 
 export default function Services() {
@@ -59,7 +60,7 @@ export default function Services() {
             {/* Card 1 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: "url('/images/service1.png')" }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.service1})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>CNC Milling</h3>
@@ -75,7 +76,7 @@ export default function Services() {
             {/* Card 2 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: "url('/images/cnc-turning.png')" }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.cncTurning})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>CNC Turning</h3>
@@ -91,7 +92,7 @@ export default function Services() {
             {/* Card 3 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: "url('/images/grinding.png')" }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.grinding})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Prototype &amp; Production</h3>
@@ -107,7 +108,7 @@ export default function Services() {
             {/* Card 4 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: "url('/images/service2.png')" }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.service2})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Secondary Services</h3>
@@ -123,7 +124,7 @@ export default function Services() {
             {/* Card 5 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: "url('/images/service2.png')" }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.service2})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Quality Assurance</h3>

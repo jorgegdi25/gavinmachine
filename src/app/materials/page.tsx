@@ -4,6 +4,7 @@ import {
   CheckCircle2, Box, Layers, 
   Wrench, ShieldCheck, Cpu
 } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function Materials() {
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/hero-bg.png')", backgroundColor: "#0c1a2d" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.heroBackground})`, backgroundColor: "#0c1a2d" }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>

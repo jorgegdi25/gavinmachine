@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import IndustriesComponent from "@/components/Industries/Industries";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export default function IndustriesServed() {
   return (
     <>
       {/* 1. Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/industries-bg.png')", backgroundColor: "#0c1a2d" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.industriesBackground})`, backgroundColor: "#0c1a2d" }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>

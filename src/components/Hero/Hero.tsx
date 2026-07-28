@@ -2,6 +2,8 @@ import styles from "./Hero.module.css";
 import Link from "next/link";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import CountUp from "@/components/CountUp/CountUp";
+import heroPoster from "../../../public/images/cnc_hero_bg.png";
+import heroVideo from "../../../public/hero-video.mp4";
 
 export default function Hero() {
   return (
@@ -15,9 +17,9 @@ export default function Hero() {
         loop
         playsInline
         preload="metadata"
-        poster="/images/cnc_hero_bg.png"
+        poster={heroPoster.src}
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
 
       <div className={styles.heroOverlay} />

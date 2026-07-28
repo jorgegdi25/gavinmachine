@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
@@ -65,7 +66,7 @@ export default function Navbar() {
       <div className={styles.container}>
         <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
           <img
-            src="/logo-gavin.png"
+            src={media.logoGavin}
             alt="Gavin Machine Logo"
             className={styles.logoImage}
           />

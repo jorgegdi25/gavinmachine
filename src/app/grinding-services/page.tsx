@@ -6,6 +6,7 @@ import {
   FileCode2, FileBox, FileDigit, FileText, Blocks, Box,
   Mail, Phone
 } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function Grinding() {
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/grinding.png')" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.grinding})` }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>

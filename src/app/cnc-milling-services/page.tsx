@@ -6,6 +6,7 @@ import {
   FileBox, FileDigit, FileText, Blocks,
   Mail, Phone
 } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function CNCMilling() {
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/hero-bg.png')" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.heroBackground})` }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>
@@ -192,7 +193,7 @@ export default function CNCMilling() {
         <div className="container">
           <div className={styles.equipmentContainer}>
             <div className={styles.equipmentImageWrapper}>
-              <img src="/images/service1.png" alt="Haas CNC Milling Machine" className={styles.equipmentImage} />
+              <img src={media.service1} alt="Haas CNC Milling Machine" className={styles.equipmentImage} />
             </div>
             
             <div>

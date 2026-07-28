@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 import { Plus, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "./Gallery.module.css";
 
 const galleryImages = [
-  { src: "/images/ind-semiconductor.png", alt: "Semiconductor Wafer Machining" },
-  { src: "/images/ind-biomedical.png", alt: "Titanium Medical Implants" },
-  { src: "/images/ind-microwave.png", alt: "Gold Plated RF Component" },
-  { src: "/images/ind-scientific.png", alt: "Optics Metal Housing" },
-  { src: "/images/service1.png", alt: "5-Axis CNC Milling" },
-  { src: "/images/service2.png", alt: "CMM Inspection" },
+  { src: media.semiconductor, alt: "Semiconductor Wafer Machining" },
+  { src: media.biomedical, alt: "Titanium Medical Implants" },
+  { src: media.microwave, alt: "Gold Plated RF Component" },
+  { src: media.scientific, alt: "Optics Metal Housing" },
+  { src: media.service1, alt: "5-Axis CNC Milling" },
+  { src: media.service2, alt: "CMM Inspection" },
 ];
 
 export default function Gallery() {

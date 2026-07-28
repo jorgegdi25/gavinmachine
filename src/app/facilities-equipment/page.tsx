@@ -14,7 +14,7 @@ export default function Facilities() {
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/facility-bg.jpg')", backgroundColor: "#0c1a2d" }}>
+      <section className={styles.hero} style={{ backgroundColor: "#0c1a2d" }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>

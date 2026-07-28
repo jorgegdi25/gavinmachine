@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, FileCheck2, Mail, Microscope, Phone, Search, Target } from "lucide-react";
+import { media } from "@/lib/media";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ const inspectionEquipment = [
 export default function QualityControl() {
   return (
     <>
-      <section className={styles.hero} style={{ backgroundImage: "url('/images/service3.png')" }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${media.service3})` }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>
@@ -104,7 +105,7 @@ export default function QualityControl() {
         <div className="container">
           <div className={styles.equipmentContainer}>
             <div className={styles.equipmentImageWrapper}>
-              <img src="/images/ind-scientific.png" alt="Precision Inspection Equipment" className={styles.equipmentImage} />
+              <img src={media.scientific} alt="Precision Inspection Equipment" className={styles.equipmentImage} />
             </div>
 
             <div>
