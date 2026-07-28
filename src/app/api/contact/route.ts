@@ -7,6 +7,8 @@ export async function POST(request: Request) {
     const company = (formData.get("company") as string) || "N/A";
     const email = (formData.get("email") as string) || "";
     const phone = (formData.get("phone") as string) || "N/A";
+    const message = (formData.get("message") as string) || "";
+    const file = formData.get("file") as File | null;
     const apiKey = process.env.RESEND_API_KEY;
 
     if (!apiKey) {
@@ -79,7 +81,7 @@ export async function POST(request: Request) {
       resendPayload.attachments = attachments;
     }
 
-    const response = await fetch("https://api.resend.com/emails", {
+    let response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -88,7 +90,21 @@ export async function POST(request: Request) {
       body: JSON.stringify(resendPayload),
     });
 
-    const data = await response.json();
+    let data = await response.json();
+
+    // If in Resend testing sandbox mode before domain verification, fallback to account owner email
+    if (!response.ok && data?.message?.includes("testing emails")) {
+      resendPayload.to = ["jorgegonzalezmejia@gmail.com"];
+      response = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resendPayload),
+      });
+      data = await response.json();
+    }
 
     if (!response.ok) {
       return NextResponse.json(
