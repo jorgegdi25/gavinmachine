@@ -1,6 +1,6 @@
 import styles from "./Hero.module.css";
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import CountUp from "@/components/CountUp/CountUp";
 
 export default function Hero() {
@@ -25,19 +25,32 @@ export default function Hero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>
-            Precision CNC{" "}
-            <span className={styles.highlight}>Machining Solutions</span>
+            Precision CNC Milling &amp; Turning
+            <span className={styles.highlight}>Prototype to Production Manufacturing</span>
           </h1>
           <div className={styles.divider} />
           <p className={styles.subtitle}>
-            Delivering high-quality machined components with accuracy, consistency, and on-time performance.
+            Advanced 3, 4 &amp; 5-Axis CNC machining, precision turning, CAD/CAM programming, and quality inspection for prototype and production manufacturing with accuracy, consistency, and on-time performance.
           </p>
+          <div className={styles.badges} aria-label="Manufacturing highlights">
+            {[
+              "3, 4 & 5-Axis CNC Machining",
+              "Prototype to Production",
+              "RFQs Within 24 Hours",
+              "Since 1990",
+            ].map((badge) => (
+              <span key={badge} className={styles.badge}>
+                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
+                {badge}
+              </span>
+            ))}
+          </div>
           <div className={styles.actions}>
             <Link href="/get-a-quote" className="btn btn--primary">
-              GET A QUOTE <ArrowRight size={18} />
+              REQUEST A QUOTE <ArrowRight size={18} />
             </Link>
-            <Link href="/what-we-offer" className={styles.ghostBtn}>
-              OUR CAPABILITIES <ArrowRight size={18} />
+            <Link href="/facilities-equipment" className={styles.ghostBtn}>
+              VIEW FACILITIES <ArrowRight size={18} />
             </Link>
           </div>
         </div>

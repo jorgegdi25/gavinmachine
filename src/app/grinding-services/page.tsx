@@ -205,7 +205,7 @@ export default function Grinding() {
           
           <div className={styles.ctaRight}>
             <Link href="/get-a-quote" className="btn btn--primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
-              SUBMIT YOUR RFQ TODAY
+              REQUEST A QUOTE
             </Link>
             
             <a href="mailto:info@gavinmachine.com" className={styles.ctaInfoBox}>

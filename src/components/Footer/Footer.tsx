@@ -18,7 +18,7 @@ export default function Footer() {
             </Link>
             <p className={styles.description}>
               We are a family-owned machine shop specializing in precision CNC
-              milling, turning, and grinding for the most demanding industries.
+              milling and turning for the most demanding industries.
               Est. 1990.
             </p>
             <div className={styles.socials}>
@@ -96,10 +96,13 @@ export default function Footer() {
                 <Link href="/cnc-turning-services">CNC Turning</Link>
               </li>
               <li>
-                <Link href="/grinding-services">Grinding</Link>
+                <Link href="/what-we-offer#service-details">Prototype &amp; Production</Link>
               </li>
               <li>
-                <Link href="/quality-control">Inspection &amp; QC</Link>
+                <Link href="/what-we-offer#service-details">Secondary Services</Link>
+              </li>
+              <li>
+                <Link href="/quality-control">Quality Assurance</Link>
               </li>
               <li>
                 <Link href="/get-a-quote">Request a Quote</Link>

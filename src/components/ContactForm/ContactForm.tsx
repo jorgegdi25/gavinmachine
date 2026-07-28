@@ -27,7 +27,7 @@ export default function ContactForm() {
         <div className={styles.header}>
           <div className={styles.labelWrapper}>
             <div className={styles.labelLine}></div>
-            <span className={styles.label}>GET A QUOTE</span>
+            <span className={styles.label}>REQUEST A QUOTE</span>
           </div>
           <h2 className={styles.title}>
             <span className={styles.titleDark}>Let's Build The Right</span><br />
@@ -103,7 +103,7 @@ export default function ContactForm() {
                 </div>
 
                 <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                  {isSubmitting ? "SENDING..." : "REQUEST QUOTE"} <ArrowRight size={18} />
+                  {isSubmitting ? "SENDING..." : "REQUEST A QUOTE"} <ArrowRight size={18} />
                 </button>
               </form>
             )}

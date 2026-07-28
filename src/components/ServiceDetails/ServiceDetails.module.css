@@ -1,0 +1,135 @@
+.section {
+  padding: 1rem 0 6rem;
+  background: var(--color-white);
+}
+
+.container {
+  display: grid;
+  gap: 2rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.eyebrow {
+  color: var(--color-cta);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.title {
+  color: var(--color-dark);
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tab {
+  padding: 0.8rem 1.2rem;
+  color: var(--color-dark);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tab:hover {
+  border-color: var(--color-cta);
+}
+
+.activeTab {
+  color: var(--color-white);
+  background: var(--color-cta);
+  border-color: var(--color-cta);
+}
+
+.panel {
+  display: grid;
+  gap: 2rem;
+  min-height: 320px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.contentSection {
+  display: grid;
+  gap: 1rem;
+}
+
+.contentSection h3,
+.capacity h3 {
+  color: var(--color-dark);
+  font-size: 1.45rem;
+}
+
+.contentSection p {
+  max-width: 980px;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+.contentSection ul,
+.capacity ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.contentSection li,
+.capacity li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--color-dark);
+  line-height: 1.5;
+}
+
+.contentSection li svg,
+.capacity li svg {
+  flex-shrink: 0;
+  color: var(--color-cta);
+  margin-top: 0.15rem;
+}
+
+.capacity {
+  display: grid;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: var(--color-dark);
+  border-radius: var(--radius-md);
+}
+
+.capacity h3,
+.capacity li {
+  color: var(--color-white);
+}
+
+.capacity li svg {
+  color: #7fb0f5;
+}
+
+@media (max-width: 680px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .contentSection ul,
+  .capacity ul {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,14 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { 
-  CheckCircle2, Settings, Target, Layers, 
-  Wrench, ShieldCheck, Drill, Building
+  Settings, Target, Layers, ShieldCheck, Drill, Building
 } from "lucide-react";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
   title: "Facilities & Equipment | Gavin Machine",
-  description: "View our state-of-the-art facility equipment list including multi-axis CNC mills, lathes, grinding machines, and inspection equipment.",
+  description: "View our facility equipment list including multi-axis CNC milling centers, turning centers, support equipment, and inspection equipment.",
 };
 
 export default function Facilities() {
@@ -70,9 +69,6 @@ export default function Facilities() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Our Equipment List</h2>
             <div className={styles.sectionTitleLine}></div>
-            <p className={styles.sectionSubtitle}>
-              We continuously invest in top-tier equipment from brands like Haas, Mazak, and Mitutoyo to ensure the highest quality manufacturing.
-            </p>
           </div>
 
           <div className={styles.capabilitiesGrid2Col}>
@@ -82,14 +78,18 @@ export default function Facilities() {
                 <div className={styles.capIconWrapper}>
                   <Target size={24} />
                 </div>
-                <h3 className={styles.capTitle}>CNC Milling</h3>
+                <h3 className={styles.capTitle}>Milling Centers</h3>
               </div>
               <ul className={styles.capList}>
-                <li className={styles.capListItem}>Haas UMC-750 5-Axis Universal Machining Center</li>
-                <li className={styles.capListItem}>Haas VF-4SS Super Speed VMC</li>
-                <li className={styles.capListItem}>Haas VF-2 VMC with 4th Axis</li>
-                <li className={styles.capListItem}>Hurco VMX42i VMC</li>
-                <li className={styles.capListItem}>Bridgeport Vertical Milling Machines (Manual)</li>
+                <li className={styles.capListItem}>Fanuc RoboDrill T21iFL with Pallet Changer</li>
+                <li className={styles.capListItem}>Mazak Nexus VCN-570C with Smooth Technology</li>
+                <li className={styles.capListItem}>(2) Mazak Nexus 510C</li>
+                <li className={styles.capListItem}>(2) Haas VF-2 SSYT with 5-Axis Trunnions</li>
+                <li className={styles.capListItem}>Haas VF-2 equipped with Rotary 4th Axis Indexer</li>
+                <li className={styles.capListItem}>Hass VF4 SS</li>
+                <li className={styles.capListItem}>Haas VF-3</li>
+                <li className={styles.capListItem}>TRAK DPM AGE Three-Axis Bed Mill</li>
+                <li className={styles.capListItem}>Lagun FTV-2 with ProtoTRAK MX2 Control</li>
               </ul>
             </div>
 
@@ -99,13 +99,12 @@ export default function Facilities() {
                 <div className={styles.capIconWrapper}>
                   <Settings size={24} />
                 </div>
-                <h3 className={styles.capTitle}>CNC Turning</h3>
+                <h3 className={styles.capTitle}>Turning Centers</h3>
               </div>
               <ul className={styles.capList}>
+                <li className={styles.capListItem}>Mazak Quick Turn Nexus 250-II</li>
                 <li className={styles.capListItem}>Haas ST-20Y CNC Lathe with Y-Axis and Live Tooling</li>
-                <li className={styles.capListItem}>Haas ST-10 CNC Lathe with Bar Feeder</li>
-                <li className={styles.capListItem}>Doosan Puma 2100SY High Performance</li>
-                <li className={styles.capListItem}>Hardinge Precision Toolroom Lathes (Manual)</li>
+                <li className={styles.capListItem}>CNC Lathe with ProtoTRAK LX2 Control (17&quot; Swing × 48&quot; Capacity)</li>
               </ul>
             </div>
 
@@ -115,14 +114,12 @@ export default function Facilities() {
                 <div className={styles.capIconWrapper}>
                   <Layers size={24} />
                 </div>
-                <h3 className={styles.capTitle}>Grinding & Support</h3>
+                <h3 className={styles.capTitle}>Additional Equipment</h3>
               </div>
               <ul className={styles.capList}>
-                <li className={styles.capListItem}>Okamoto Surface Grinder 12x24</li>
-                <li className={styles.capListItem}>Mitsui Surface Grinders</li>
-                <li className={styles.capListItem}>Amada Automatic Bandsaw</li>
-                <li className={styles.capListItem}>Bead Blasting Cabinet</li>
-                <li className={styles.capListItem}>Vibratory Tumblers for deburring</li>
+                <li className={styles.capListItem}>W.F. Wells Horizontal Saw</li>
+                <li className={styles.capListItem}>Grob Bandsaw</li>
+                <li className={styles.capListItem}>Sullair 1100e Compressor</li>
               </ul>
             </div>
             
@@ -132,14 +129,16 @@ export default function Facilities() {
                 <div className={styles.capIconWrapper}>
                   <ShieldCheck size={24} />
                 </div>
-                <h3 className={styles.capTitle}>Quality Control</h3>
+                <h3 className={styles.capTitle}>Production Capabilities</h3>
               </div>
               <ul className={styles.capList}>
-                <li className={styles.capListItem}>Zeiss Contura G2 CMM (VAST XT)</li>
-                <li className={styles.capListItem}>Mitutoyo Optical Comparator</li>
-                <li className={styles.capListItem}>Mitutoyo Surface Roughness Tester</li>
-                <li className={styles.capListItem}>Calibrated gauges, micrometers, pins</li>
-                <li className={styles.capListItem}>Climate-controlled inspection room</li>
+                <li className={styles.capListItem}>Prototype Development</li>
+                <li className={styles.capListItem}>Low-to-Medium Volume Production</li>
+                <li className={styles.capListItem}>High-Mix Manufacturing</li>
+                <li className={styles.capListItem}>Precision Machined Components</li>
+                <li className={styles.capListItem}>Custom Fixtures &amp; Tooling</li>
+                <li className={styles.capListItem}>Secondary Processing Coordination</li>
+                <li className={styles.capListItem}>Quality Inspection</li>
               </ul>
             </div>
           </div>
@@ -164,7 +163,7 @@ export default function Facilities() {
           
           <div className={styles.ctaRight}>
             <Link href="/get-a-quote" className="btn btn--primary" style={{ width: '100%', justifyContent: 'center' }}>
-              GET A QUOTE
+              REQUEST A QUOTE
             </Link>
           </div>
         </div>

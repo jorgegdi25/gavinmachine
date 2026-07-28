@@ -1,4 +1,4 @@
-import { ShieldCheck, Settings, Microscope, Clock } from "lucide-react";
+import { ShieldCheck, Settings, Microscope, Factory } from "lucide-react";
 import Reveal from "@/components/Reveal/Reveal";
 import styles from "./KeyStats.module.css";
 
@@ -19,9 +19,9 @@ const stats = [
     subtitle: "Quality You Can Measure",
   },
   {
-    icon: <Clock size={34} strokeWidth={1.5} />,
-    title: "FAST TURNAROUND",
-    subtitle: "On-Time Delivery, Every Time",
+    icon: <Factory size={34} strokeWidth={1.5} />,
+    title: "PROTOTYPE TO PRODUCTION",
+    subtitle: "Prototype to Production Manufacturing",
   },
 ];
 

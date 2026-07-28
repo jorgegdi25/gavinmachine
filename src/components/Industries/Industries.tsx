@@ -64,7 +64,7 @@ export default function Industries() {
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>Biomedical</h3>
               <p className={styles.cardDesc}>
-                Precision parts for medical devices and life-saving technologies.
+                Components for medical devices, laboratory equipment, surgical instruments, and analytical systems.
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Industries() {
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>Microwave</h3>
               <p className={styles.cardDesc}>
-                Complex components for RF, microwave, and telecom systems.
+                High-precision components for RF, microwave, telecommunications, and electronic systems.
               </p>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function Industries() {
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>Scientific</h3>
               <p className={styles.cardDesc}>
-                Accurate parts for laboratory instruments and research equipment.
+                Precision-machined components for research instrumentation, laboratory automation, and analytical equipment.
               </p>
             </div>
           </div>

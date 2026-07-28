@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Gavin Machine",
   },
   description:
-    "Gavin Machine is a family-owned precision machining company in Hingham, MA. 30+ years of experience in CNC milling, turning, and grinding for medical, aerospace, defense, and semiconductor industries.",
+    "Gavin Machine is a family-owned precision machining company in Hingham, MA. 30+ years of experience in CNC milling and turning for medical, aerospace, defense, and semiconductor industries.",
   keywords: [
     "precision machining",
     "CNC milling",

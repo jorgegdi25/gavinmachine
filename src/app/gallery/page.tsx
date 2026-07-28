@@ -4,7 +4,7 @@ import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
   title: "Gallery | Precision Machining Projects | Gavin Machine",
-  description: "View our gallery of completed precision machining projects, showcasing our capabilities in milling, turning, and grinding.",
+  description: "View our gallery of completed precision machining projects, showcasing our capabilities in CNC milling, CNC turning, inspection, and assembly.",
 };
 
 export default function GalleryPage() {

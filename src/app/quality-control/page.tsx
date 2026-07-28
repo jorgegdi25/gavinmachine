@@ -1,40 +1,41 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { 
-  CheckCircle2, Search, Target, ShieldCheck, FileCheck2, 
-  Settings, Layers, Microscope, Wrench,
-  FileCode2, FileBox, FileDigit, FileText, Blocks, Box,
-  Mail, Phone
-} from "lucide-react";
+import { CheckCircle2, FileCheck2, Mail, Microscope, Phone, Search, Target } from "lucide-react";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
-  title: "Quality Control & Inspection | Gavin Machine",
-  description: "Advanced precision measurement and quality control for CNC machining. Rigorous inspection with Coordinate Measuring Machines (CMM) and precision gauges.",
+  title: "Quality Assurance & Inspection | Gavin Machine",
+  description: "Advanced inspection equipment and proven quality control processes for precision CNC machining.",
 };
+
+const inspectionEquipment = [
+  "14\" Optical Comparator with Metrology Display",
+  "24\" Mitutoyo Electronic Vertical Gauge System",
+  "Full Complement of Precision Pin Gauges",
+  "Precision Measuring Instruments and Inspection Accessories",
+];
 
 export default function QualityControl() {
   return (
     <>
-      {/* Hero Section */}
       <section className={styles.hero} style={{ backgroundImage: "url('/images/service3.png')" }}>
         <div className={styles.heroOverlay}></div>
         <div className="container">
           <div className={styles.heroContainer}>
             <div className={styles.heroLabel}>
               <div className={styles.heroLabelLine}></div>
-              <span className={styles.heroLabelText}>QUALITY CONTROL</span>
+              <span className={styles.heroLabelText}>QUALITY ASSURANCE &amp; INSPECTION</span>
             </div>
-            
+
             <h1 className={styles.heroTitle}>
               <span className={styles.heroTitleDark}>Quality Assurance </span>
-              <span className={styles.heroTitleLight}>& Inspection.</span>
+              <span className={styles.heroTitleLight}>&amp; Inspection.</span>
             </h1>
-          
+
             <p className={styles.heroSubtitle}>
-              Quality is at the core of everything we manufacture. We verify that every component meets customer specifications and performance requirements.
+              Quality is at the core of everything we manufacture. Gavin Machine utilizes advanced inspection equipment and proven quality control processes to verify that every component meets customer specifications and performance requirements.
             </p>
-            
+
             <div className={styles.heroButtons}>
               <Link href="/get-a-quote" className="btn btn--primary">
                 REQUEST A QUOTE
@@ -47,12 +48,11 @@ export default function QualityControl() {
         </div>
       </section>
 
-      {/* Stats Banner */}
       <div className={styles.statsBanner}>
         <div className={`container ${styles.statsContainer}`}>
           <div className={styles.statItem}>
             <Search size={32} strokeWidth={1.5} className={styles.statIcon} />
-            <span className={styles.statText}>Advanced<br />Metrology</span>
+            <span className={styles.statText}>Quality Assurance<br />&amp; Inspection</span>
           </div>
           <div className={styles.statItem}>
             <Microscope size={32} strokeWidth={1.5} className={styles.statIcon} />
@@ -60,184 +60,102 @@ export default function QualityControl() {
           </div>
           <div className={styles.statItem}>
             <Target size={32} strokeWidth={1.5} className={styles.statIcon} />
-            <span className={styles.statText}>0.00008" CMM<br />Accuracy</span>
+            <span className={styles.statText}>0.00008&quot; X-Axis<br />Accuracy</span>
           </div>
           <div className={styles.statItem}>
             <FileCheck2 size={32} strokeWidth={1.5} className={styles.statIcon} />
-            <span className={styles.statText}>100% Quality<br />Verification</span>
+            <span className={styles.statText}>Verified Quality &amp;<br />Consistent Performance</span>
           </div>
         </div>
       </div>
 
-      {/* Quality Commitment Cards */}
       <section className={styles.sectionWrapper}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Our Quality Commitment</h2>
+            <h2 className={styles.sectionTitle}>Quality Assurance &amp; Inspection</h2>
             <div className={styles.sectionTitleLine}></div>
             <p className={styles.sectionSubtitle}>
-              By combining advanced measurement technology with experienced inspectors, we provide customers with confidence that every component is manufactured to the highest standards.
+              From prototype development through production manufacturing, our inspection capabilities help ensure accuracy, consistency, and repeatability throughout the machining process.
             </p>
           </div>
 
-          <div className={styles.capabilitiesGrid}>
-            {/* Card 1 */}
+          <div className={styles.capabilitiesGrid2Col}>
             <div className={styles.capabilityCard}>
-              <div className={styles.capHeader}>
-                <div className={styles.capIconWrapper}>
-                  <ShieldCheck size={24} />
-                </div>
-                <h3 className={styles.capTitle}>Process Integration</h3>
-              </div>
+              <h3 className={styles.capTitle}>Inspection Capabilities</h3>
               <p className={styles.capDesc}>
-                Our inspection processes are integrated throughout production to ensure that parts conform strictly to customer drawings.
+                Our quality department is equipped with precision measurement systems capable of verifying complex geometries and tight-tolerance components.
               </p>
-              <ul className={styles.capList}>
-                <li className={styles.capListItem}>In-process measurement checks</li>
-                <li className={styles.capListItem}>First article inspection (FAI)</li>
-                <li className={styles.capListItem}>Final dimensional verification</li>
-                <li className={styles.capListItem}>Conformity to specifications</li>
-              </ul>
             </div>
 
-            {/* Card 2 */}
             <div className={styles.capabilityCard}>
-              <div className={styles.capHeader}>
-                <div className={styles.capIconWrapper}>
-                  <Target size={24} />
-                </div>
-                <h3 className={styles.capTitle}>Precision & Accuracy</h3>
-              </div>
+              <h3 className={styles.capTitle}>Quality Commitment</h3>
               <p className={styles.capDesc}>
-                From prototype development through production manufacturing, our inspection capabilities help ensure absolute accuracy.
+                Our inspection processes are integrated throughout production to ensure that parts conform to customer drawings, specifications, and quality requirements. By combining advanced measurement technology with experienced machinists and inspectors, we provide customers with confidence that every component is manufactured to the highest standards.
               </p>
-              <ul className={styles.capList}>
-                <li className={styles.capListItem}>Sub-micron CMM measurement</li>
-                <li className={styles.capListItem}>Tight-tolerance verification</li>
-                <li className={styles.capListItem}>Complex geometry analysis</li>
-                <li className={styles.capListItem}>Consistent repeatability</li>
-              </ul>
-            </div>
-
-            {/* Card 3 */}
-            <div className={styles.capabilityCard}>
-              <div className={styles.capHeader}>
-                <div className={styles.capIconWrapper}>
-                  <Layers size={24} />
-                </div>
-                <h3 className={styles.capTitle}>Consistent Performance</h3>
-              </div>
               <p className={styles.capDesc}>
-                Gavin Machine is committed to delivering precision-machined parts with verified quality, regardless of the order volume.
+                Whether producing a single prototype or recurring production orders, Gavin Machine is committed to delivering precision-machined parts with verified quality and consistent performance.
               </p>
-              <ul className={styles.capList}>
-                <li className={styles.capListItem}>Single prototype verification</li>
-                <li className={styles.capListItem}>Recurring production QC</li>
-                <li className={styles.capListItem}>Traceable documentation</li>
-                <li className={styles.capListItem}>Continuous improvement</li>
-              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* File Formats - Shared Section */}
-      <section className={`${styles.sectionWrapper} ${styles.sectionAlt}`}>
-        <div className="container">
-          <div className={styles.sectionHeader} style={{ marginBottom: "2.5rem" }}>
-            <h2 className={styles.sectionTitle} style={{ fontSize: "1.8rem" }}>Accepted File Formats</h2>
-          </div>
-
-          <div className={styles.formatsGrid}>
-            <div className={styles.formatBox}>
-              <Box size={32} strokeWidth={1.5} className={styles.formatIcon} />
-              <div className={styles.formatTitle}>SOLIDWORKS</div>
-              <div className={styles.formatExt}>(.SLDPRT)</div>
-            </div>
-            
-            <div className={styles.formatBox}>
-              <FileCode2 size={32} strokeWidth={1.5} className={styles.formatIcon} />
-              <div className={styles.formatTitle}>STEP</div>
-              <div className={styles.formatExt}>(.STP, .STEP)</div>
-            </div>
-            
-            <div className={styles.formatBox}>
-              <FileBox size={32} strokeWidth={1.5} className={styles.formatIcon} />
-              <div className={styles.formatTitle}>IGES</div>
-              <div className={styles.formatExt}>(.IGS)</div>
-            </div>
-            
-            <div className={styles.formatBox}>
-              <FileDigit size={32} strokeWidth={1.5} className={styles.formatIcon} />
-              <div className={styles.formatTitle}>DXF</div>
-              <div className={styles.formatExt}>(.DXF)</div>
-            </div>
-            
-            <div className={styles.formatBox}>
-              <FileText size={32} strokeWidth={1.5} className={styles.formatIcon} />
-              <div className={styles.formatTitle}>PDF</div>
-              <div className={styles.formatExt}>(Drawings)</div>
-            </div>
-            
-            <div className={styles.formatBox}>
-              <Blocks size={32} strokeWidth={1.5} className={styles.formatIcon} />
-              <div className={styles.formatTitle}>Other 3D</div>
-              <div className={styles.formatExt}>Formats</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Equipment Section */}
       <section className={styles.sectionWrapper} id="equipment">
         <div className="container">
           <div className={styles.equipmentContainer}>
             <div className={styles.equipmentImageWrapper}>
               <img src="/images/ind-scientific.png" alt="Precision Inspection Equipment" className={styles.equipmentImage} />
             </div>
-            
+
             <div>
-              <h2 className={styles.sectionTitle} style={{ textAlign: 'left' }}>Inspection Equipment</h2>
-              <div className={styles.sectionTitleLine} style={{ margin: '0 0 2rem 0' }}></div>
-              
+              <h2 className={styles.sectionTitle} style={{ textAlign: "left" }}>Coordinate Measuring Machines (CMM)</h2>
+              <div className={styles.sectionTitleLine} style={{ margin: "0 0 2rem 0" }}></div>
+
+              <h3 className={styles.capTitle}>Helmel PHOENIX 216-162 CMM</h3>
+              <ul className={styles.equipmentList}>
+                {[
+                  "X-Axis: 20\"",
+                  "Y-Axis: 16\"",
+                  "Z-Axis: 16\"",
+                  "X-Axis Accuracy: 0.00008\"",
+                  "Y-Axis Accuracy: 0.00012\"",
+                  "Z-Axis Accuracy: 0.00012\"",
+                  "Repeatability: 0.00013\"",
+                  "Volumetric Accuracy: 0.00038\"",
+                ].map((item) => (
+                  <li key={item} className={styles.equipmentItem}>
+                    <CheckCircle2 size={20} className={styles.equipmentCheck} />
+                    <span className={styles.equipmentText}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className={styles.capTitle}>Helmel Coordinate Measuring Machine</h3>
               <ul className={styles.equipmentList}>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <div>
-                    <span className={styles.equipmentText} style={{ display: 'block', fontWeight: '700', color: 'var(--color-dark)' }}>Helmel PHOENIX 216-162 CMM</span>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', display: 'block', marginTop: '4px' }}>Range: X: 20", Y: 16", Z: 16" | Accuracy: 0.00008"</span>
-                  </div>
+                  <span className={styles.equipmentText}>Measuring Capacity: 25&quot; × 24&quot; × 18&quot;</span>
                 </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <div>
-                    <span className={styles.equipmentText} style={{ display: 'block', fontWeight: '700', color: 'var(--color-dark)' }}>Helmel Coordinate Measuring Machine</span>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', display: 'block', marginTop: '4px' }}>Capacity: 25" × 24" × 18"</span>
-                  </div>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText} style={{ marginTop: '2px' }}>14" Optical Comparator with Metrology Display</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText} style={{ marginTop: '2px' }}>24" Mitutoyo Electronic Vertical Gauge System</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText} style={{ marginTop: '2px' }}>Full Complement of Precision Pin Gauges</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText} style={{ marginTop: '2px' }}>Precision Measuring Instruments and Accessories</span>
-                </li>
+              </ul>
+
+              <p className={styles.capDesc}>
+                These systems provide accurate dimensional verification for complex machined components and critical features.
+              </p>
+
+              <h3 className={styles.capTitle}>Precision Inspection Equipment</h3>
+              <ul className={styles.equipmentList}>
+                {inspectionEquipment.map((item) => (
+                  <li key={item} className={styles.equipmentItem}>
+                    <CheckCircle2 size={20} className={styles.equipmentCheck} />
+                    <span className={styles.equipmentText}>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
       <section className={styles.finalCta}>
         <div className={`container ${styles.ctaContainer}`}>
           <div className={styles.ctaLeft}>
@@ -246,23 +164,20 @@ export default function QualityControl() {
               READY TO START YOUR NEXT PROJECT?
             </div>
             <h2 className={styles.ctaTitle}>
-              Quality <span className={styles.ctaTitleHighlight}>Guaranteed.</span>
+              Quality <span className={styles.ctaTitleHighlight}>Assurance &amp; Inspection.</span>
             </h2>
-            <p className={styles.ctaDesc}>
-              Our quality control department ensures your parts are done right the first time, to your exact specifications.
-            </p>
           </div>
-          
+
           <div className={styles.ctaRight}>
-            <Link href="/get-a-quote" className="btn btn--primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
-              REQUEST A QUOTE TODAY
+            <Link href="/get-a-quote" className="btn btn--primary" style={{ width: "100%", justifyContent: "center", marginBottom: "1rem" }}>
+              REQUEST A QUOTE
             </Link>
-            
+
             <a href="mailto:info@gavinmachine.com" className={styles.ctaInfoBox}>
               <Mail size={20} className={styles.ctaIcon} />
               <span>info@gavinmachine.com</span>
             </a>
-            
+
             <a href="tel:6174628536" className={styles.ctaInfoBox}>
               <Phone size={20} className={styles.ctaIcon} />
               <span>(617) 462-8536</span>

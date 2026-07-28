@@ -211,23 +211,7 @@ export default function CNCTurning() {
                 </li>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>TRAK TRL 1540V with 8-Station Turret</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
                   <span className={styles.equipmentText}>CNC Lathe with ProtoTRAK LX2 Control (17" Swing × 48" Capacity)</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Haas ST-10 CNC Lathe with Bar Feeder</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Doosan Puma 2100SY High Performance Turning Center</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Hardinge Precision Toolroom Lathes (Manual)</span>
                 </li>
               </ul>
             </div>
@@ -253,7 +237,7 @@ export default function CNCTurning() {
           
           <div className={styles.ctaRight}>
             <Link href="/get-a-quote" className="btn btn--primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
-              SUBMIT YOUR RFQ TODAY
+              REQUEST A QUOTE
             </Link>
             
             <a href="mailto:info@gavinmachine.com" className={styles.ctaInfoBox}>

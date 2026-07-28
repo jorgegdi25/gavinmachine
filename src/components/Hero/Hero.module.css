@@ -102,7 +102,9 @@
 }
 
 .highlight {
+  display: block;
   color: #3b82f6;
+  margin-top: 0.3rem;
 }
 
 .divider {
@@ -117,6 +119,32 @@
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: -0.25rem 0 var(--space-xl);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  color: var(--color-white);
+  background: rgba(10, 27, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.badge svg {
+  color: #7fb0f5;
+  flex-shrink: 0;
 }
 
 .actions {
@@ -251,6 +279,12 @@
   }
   .actions {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .badges {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   /* The floating card competes with the stacked mobile content, so it

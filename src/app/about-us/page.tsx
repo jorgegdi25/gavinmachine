@@ -110,7 +110,7 @@ export default function AboutUs() {
                 <h3 className={styles.capTitle}>1990: Foundation</h3>
               </div>
               <p className={styles.capDesc}>
-                Paddy Gavin founded Gavin Machine in Hingham, MA with a single machine and a strong focus on quality workmanship and customer service.
+                Founded in 1990 by Paddy Gavin, Gavin Machine began with a single machine and a commitment to exceptional craftsmanship, customer service, and long-term relationships that continue to define our company today.
               </p>
             </div>
 
@@ -122,7 +122,7 @@ export default function AboutUs() {
                 <h3 className={styles.capTitle}>Expansion & Investment</h3>
               </div>
               <p className={styles.capDesc}>
-                Consistently expanded our facility and invested in modern CNC technology to better serve our growing list of industrial and commercial customers.
+                Continually invested in advanced CNC machining centers, CAD/CAM programming, and precision inspection technology to support increasingly complex customer requirements.
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export default function AboutUs() {
                 <h3 className={styles.capTitle}>Advanced Capabilities</h3>
               </div>
               <p className={styles.capDesc}>
-                Added sophisticated 3, 4, and 5-axis machining centers, CNC turning with live tooling, and highly advanced CMM inspection equipment.
+                Expanded our capabilities with advanced 3, 4 &amp; 5-axis CNC machining, CNC turning with live tooling, Mastercam CAD/CAM programming, and precision CMM inspection.
               </p>
             </div>
 
@@ -146,7 +146,7 @@ export default function AboutUs() {
                 <h3 className={styles.capTitle}>Focused on the Future</h3>
               </div>
               <p className={styles.capDesc}>
-                Today, we continue to deliver precision solutions and build lasting partnerships, staying ahead of industry trends and manufacturing techniques.
+                Today, we continue investing in technology, equipment, and our people to provide precision machining solutions that help customers succeed—from prototype development to long-term production manufacturing.
               </p>
             </div>
 

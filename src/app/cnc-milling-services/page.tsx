@@ -202,19 +202,31 @@ export default function CNCMilling() {
               <ul className={styles.equipmentList}>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Haas UMC-750 5-Axis Universal Machining Center</span>
+                  <span className={styles.equipmentText}>Fanuc RoboDrill T21iFL with Pallet Changer</span>
                 </li>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Haas VF-4SS Super Speed Vertical Machining Center</span>
+                  <span className={styles.equipmentText}>Mazak Nexus VCN-570C with Smooth Technology</span>
                 </li>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Haas VF-2 Vertical Machining Center with 4th Axis</span>
+                  <span className={styles.equipmentText}>(2) Mazak Nexus 510C</span>
                 </li>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Hurco VMX42i Vertical Machining Center</span>
+                  <span className={styles.equipmentText}>(2) Haas VF-2 SSYT with 5-Axis Trunnions</span>
+                </li>
+                <li className={styles.equipmentItem}>
+                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
+                  <span className={styles.equipmentText}>Haas VF-2 equipped with Rotary 4th Axis Indexer</span>
+                </li>
+                <li className={styles.equipmentItem}>
+                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
+                  <span className={styles.equipmentText}>Hass VF4 SS</span>
+                </li>
+                <li className={styles.equipmentItem}>
+                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
+                  <span className={styles.equipmentText}>Haas VF-3</span>
                 </li>
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
@@ -223,10 +235,6 @@ export default function CNCMilling() {
                 <li className={styles.equipmentItem}>
                   <CheckCircle2 size={20} className={styles.equipmentCheck} />
                   <span className={styles.equipmentText}>Lagun FTV-2 with ProtoTRAK MX2 Control</span>
-                </li>
-                <li className={styles.equipmentItem}>
-                  <CheckCircle2 size={20} className={styles.equipmentCheck} />
-                  <span className={styles.equipmentText}>Bridgeport Vertical Milling Machines (Manual)</span>
                 </li>
               </ul>
             </div>
@@ -252,7 +260,7 @@ export default function CNCMilling() {
           
           <div className={styles.ctaRight}>
             <Link href="/get-a-quote" className="btn btn--primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
-              REQUEST A QUOTE TODAY
+              REQUEST A QUOTE
             </Link>
             
             <a href="mailto:info@gavinmachine.com" className={styles.ctaInfoBox}>

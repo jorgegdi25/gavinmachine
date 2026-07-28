@@ -1,8 +1,31 @@
 import Link from "next/link";
-import { Wrench, Factory, Layers, Box, ArrowRight } from "lucide-react";
-import CountUp from "@/components/CountUp/CountUp";
+import { Wrench, Factory, Layers, Box, ArrowRight, Check } from "lucide-react";
 import Reveal from "@/components/Reveal/Reveal";
 import styles from "./AboutSummary.module.css";
+
+function CaliperIcon() {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 7h18" />
+      <path d="M7 4v8" />
+      <path d="M19 4v8" />
+      <path d="M7 10v10c0 2 1.5 4 4 4h6" />
+      <path d="M19 10v7" />
+      <path d="M16 17h6" />
+      <path d="M16 14v6" />
+    </svg>
+  );
+}
 
 export default function AboutSummary() {
   return (
@@ -15,8 +38,8 @@ export default function AboutSummary() {
           <div className={styles.imageWrapper}>
             <div className={styles.experienceBox}>
               <span className={styles.expNumber}>1990</span>
-              <span className={styles.expTitle}>YEAR<br />FOUNDED</span>
-              <span className={styles.expSubtitle}>MASSACHUSETTS</span>
+              <span className={styles.expTitle}>30+ Years of<br />Precision Manufacturing</span>
+              <span className={styles.expSubtitle}>In Massachusetts</span>
             </div>
             
             {/* New Button over the image */}
@@ -43,15 +66,18 @@ export default function AboutSummary() {
           <div className={styles.divider}></div>
           
           <div className={styles.textContent}>
-            <p>
-              Founded in 1990, Gavin Machine is a family-owned precision machining company based in Hingham, Massachusetts.
-            </p>
-            <p>
-              At Gavin Machine, we specialize in CNC milling and CNC turning services for customers who demand precision manufacturing and dependable results. From prototypes to production runs, our team is committed to producing quality parts that meet the most demanding specifications.
-            </p>
-            <p>
-              Our mission is simple: deliver accurate, reliable, and cost-effective machined parts while building long-term partnerships through quality, service, and integrity.
-            </p>
+            <div>
+              <h3>Since 1990</h3>
+              <p>Family-owned precision machining company located in Hingham, Massachusetts.</p>
+            </div>
+            <div>
+              <h3>What We Do</h3>
+              <p>We specialize in precision CNC milling and turning, supporting customers from prototype development through production manufacturing.</p>
+            </div>
+            <div>
+              <h3>Our Commitment</h3>
+              <p>We deliver precision components with exceptional quality, dependable lead times, and responsive customer service.</p>
+            </div>
           </div>
 
           <div className={styles.featuresGrid}>
@@ -60,31 +86,34 @@ export default function AboutSummary() {
                 <Wrench size={28} strokeWidth={1.5} />
               </div>
               <h3 className={styles.featureTitle}>Prototyping</h3>
-              <p className={styles.featureDesc}>From single custom parts to functional engineering prototypes.</p>
             </div>
             
             <div className={styles.featureItem}>
               <div className={styles.featureIcon}>
                 <Factory size={28} strokeWidth={1.5} />
               </div>
-              <h3 className={styles.featureTitle}>Production Runs</h3>
-              <p className={styles.featureDesc}>Scalable low-to-medium volume manufacturing capabilities.</p>
+              <h3 className={styles.featureTitle}>Production</h3>
+            </div>
+            
+            <div className={styles.featureItem}>
+              <div className={styles.featureIcon}>
+                <CaliperIcon />
+              </div>
+              <h3 className={styles.featureTitle}>Quality Inspection</h3>
             </div>
             
             <div className={styles.featureItem}>
               <div className={styles.featureIcon}>
                 <Layers size={28} strokeWidth={1.5} />
               </div>
-              <h3 className={styles.featureTitle}>Mechanical Assembly</h3>
-              <p className={styles.featureDesc}>Turnkey solutions including hardware installation and assembly.</p>
+              <h3 className={styles.featureTitle}>Assembly &amp; Sub-Assembly</h3>
             </div>
-            
+
             <div className={styles.featureItem}>
               <div className={styles.featureIcon}>
                 <Box size={28} strokeWidth={1.5} />
               </div>
-              <h3 className={styles.featureTitle}>Diverse Materials</h3>
-              <p className={styles.featureDesc}>Machining aluminum, stainless steel, titanium, and plastics.</p>
+              <h3 className={styles.featureTitle}>Materials</h3>
             </div>
           </div>
         </div>
@@ -92,30 +121,24 @@ export default function AboutSummary() {
 
       {/* Bottom Stats Banner */}
       <div className={styles.bottomBanner}>
+        <div className={`container ${styles.bannerHeading}`}>
+          <h2>Why Manufacturers Choose Gavin Machine</h2>
+        </div>
         <div className={`container ${styles.statsContainer}`}>
-          <Reveal className={styles.statBox} delay={0}>
-            <span className={styles.statBig}><CountUp value={30} suffix="+" /></span>
-            <span className={styles.statMedium}>YEARS EXPERIENCE</span>
-            <span className={styles.statSmall}>Family owned & operated</span>
-          </Reveal>
-
-          <Reveal className={styles.statBox} delay={100}>
-            <span className={styles.statBig}><CountUp value={100} suffix="%" /></span>
-            <span className={styles.statMedium}>MADE IN USA</span>
-            <span className={styles.statSmall}>Manufactured in Massachusetts</span>
-          </Reveal>
-
-          <Reveal className={styles.statBox} delay={200}>
-            <span className={styles.statBig}><CountUp value={15} suffix="k+" /></span>
-            <span className={styles.statMedium}>SQ FT FACILITY</span>
-            <span className={styles.statSmall}>State of the art equipment</span>
-          </Reveal>
-
-          <Reveal className={styles.statBox} delay={300}>
-            <span className={styles.statBig}>QC</span>
-            <span className={styles.statMedium}>AT EVERY STEP</span>
-            <span className={styles.statSmall}>Rigorous quality standards</span>
-          </Reveal>
+          {[
+            "30+ Years of Experience",
+            "3, 4 & 5-Axis CNC Machining",
+            "Prototype to Production",
+            "RFQs Within 24 Hours",
+            "Advanced CMM Inspection",
+            "Mastercam CAD/CAM Programming",
+            "Family-Owned Since 1990",
+          ].map((item, index) => (
+            <Reveal className={styles.statBox} delay={index * 75} key={item}>
+              <Check className={styles.statIcon} size={24} strokeWidth={2.5} aria-hidden="true" />
+              <span className={styles.statMedium}>{item}</span>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

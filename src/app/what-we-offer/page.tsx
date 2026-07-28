@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import Capabilities from "@/components/Capabilities/Capabilities";
 import Services from "@/components/Services/Services";
+import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
 import Link from "next/link";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
   title: "What We Offer | Precision Machining Services | Gavin Machine",
-  description: "Explore our comprehensive CNC machining services including 3, 4 & 5-axis milling, precision turning, and grinding for critical components.",
+  description: "Explore our CNC machining services including 3, 4 & 5-axis milling, precision turning, prototype and production manufacturing, secondary services, and quality assurance.",
 };
 
 export default function WhatWeOffer() {
@@ -39,6 +40,8 @@ export default function WhatWeOffer() {
       <div style={{ padding: "4rem 0 0" }}>
         <Services />
       </div>
+
+      <ServiceDetails />
       
       {/* 3. Capabilities Detailed Hub */}
       <Capabilities />
@@ -61,7 +64,7 @@ export default function WhatWeOffer() {
           
           <div className={styles.ctaRight}>
             <Link href="/get-a-quote" className="btn btn--primary" style={{ width: '100%', justifyContent: 'center' }}>
-              REQUEST A QUOTE TODAY
+              REQUEST A QUOTE
             </Link>
           </div>
         </div>

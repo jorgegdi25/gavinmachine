@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm/ContactForm";
 import styles from "@/styles/ServicePage.module.css";
 
 export const metadata: Metadata = {
-  title: "Get a Quote | Gavin Machine",
+  title: "Request a Quote | Gavin Machine",
   description: "Request a quote for your precision machining project. Upload your drawings and specifications for a rapid response.",
 };
 

@@ -34,13 +34,14 @@ export default function Services() {
           </div>
           
           <h2 className={styles.title}>
-            <span className={styles.titleDark}>Precision Solutions.</span> <span className={styles.titleLight}>Built for Your Success.</span>
+            <span className={styles.titleDark}>Precision CNC </span>
+            <span className={styles.titleLight}>Machining Services</span>
           </h2>
           
-          <p className={styles.subtitle}>
-            From complex components to tight tolerances, we deliver high-quality machining<br />
-            and inspection services you can rely on.
-          </p>
+          <div className={styles.subtitle}>
+            <p>From prototype development to production manufacturing, Gavin Machine delivers advanced CNC milling, CNC turning, inspection, and assembly solutions for demanding industries.</p>
+            <p>Advanced CNC milling, CNC turning, quality inspection, and assembly services supported by 3, 4 &amp; 5-axis machining technology.</p>
+          </div>
         </div>
 
         {/* Services Slider */}
@@ -63,7 +64,7 @@ export default function Services() {
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>CNC Milling</h3>
                 <p className={styles.cardDesc}>
-                  High-precision 3, 4 & 5-axis CNC milling for complex geometries and tight tolerances.
+                  We offer advanced CNC milling services utilizing 3, 4, and 5-axis machining technology to manufacture complex components with tight tolerances.
                 </p>
                 <Link href="/cnc-milling-services" className={styles.cardLink}>
                   LEARN MORE <ArrowRight size={16} />
@@ -79,7 +80,7 @@ export default function Services() {
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>CNC Turning</h3>
                 <p className={styles.cardDesc}>
-                  Advanced CNC turning centers equipped for high-volume production with exceptional accuracy.
+                  Our CNC turning capabilities produce accurate and repeatable cylindrical components for a wide range of applications.
                 </p>
                 <Link href="/cnc-turning-services" className={styles.cardLink}>
                   LEARN MORE <ArrowRight size={16} />
@@ -93,11 +94,11 @@ export default function Services() {
                 <div className={styles.cardImage} style={{ backgroundImage: "url('/images/grinding.png')" }}></div>
               </div>
               <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Grinding Services</h3>
+                <h3 className={styles.cardTitle}>Prototype &amp; Production</h3>
                 <p className={styles.cardDesc}>
-                  Surface and cylindrical grinding when ultra-smooth finishes and tight tolerances are required.
+                  Gavin Machine specializes in low-to-medium quantity, high-mix manufacturing. We support customers throughout every stage of production, from initial prototypes and product development to ongoing production requirements.
                 </p>
-                <Link href="/grinding-services" className={styles.cardLink}>
+                <Link href="/what-we-offer#service-details" className={styles.cardLink}>
                   LEARN MORE <ArrowRight size={16} />
                 </Link>
               </div>
@@ -109,9 +110,25 @@ export default function Services() {
                 <div className={styles.cardImage} style={{ backgroundImage: "url('/images/service2.png')" }}></div>
               </div>
               <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Inspection & QC</h3>
+                <h3 className={styles.cardTitle}>Secondary Services</h3>
                 <p className={styles.cardDesc}>
-                  Rigorous quality control with advanced CMM equipment to verify every critical dimension.
+                  To provide complete manufacturing solutions, we coordinate a variety of finishing and value-added services. These services help ensure that components meet customer specifications and are ready for final assembly or use.
+                </p>
+                <Link href="/what-we-offer#service-details" className={styles.cardLink}>
+                  LEARN MORE <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 5 */}
+            <div className={styles.serviceCard}>
+              <div className={styles.cardImageWrapper}>
+                <div className={styles.cardImage} style={{ backgroundImage: "url('/images/service2.png')" }}></div>
+              </div>
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitle}>Quality Assurance</h3>
+                <p className={styles.cardDesc}>
+                  Quality is integrated into every stage of our manufacturing process. Through careful inspection, process control, and attention to detail, we ensure that every component meets the requirements of our customers and the demands of their applications.
                 </p>
                 <Link href="/quality-control" className={styles.cardLink}>
                   LEARN MORE <ArrowRight size={16} />

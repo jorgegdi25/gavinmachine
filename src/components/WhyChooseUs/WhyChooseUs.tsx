@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
               </div>
               <h3 className={styles.cardTitle}>30+ YEARS OF EXPERIENCE</h3>
               <div className={styles.cardDivider}></div>
-              <p className={styles.cardDesc}>Decades of precision machining expertise you can count on.</p>
+              <p className={styles.cardDesc}>Over 30 years of precision machining experience serving customers with dependable quality and on-time delivery.</p>
             </div>
 
             {/* Card 2 */}
@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
               </div>
               <h3 className={styles.cardTitle}>PRECISION & QUALITY</h3>
               <div className={styles.cardDivider}></div>
-              <p className={styles.cardDesc}>Tight tolerances, advanced equipment, and rigorous quality control.</p>
+              <p className={styles.cardDesc}>Tight tolerances verified through advanced CMM inspection and rigorous quality control processes.</p>
             </div>
 
             {/* Card 3 */}
@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
               </div>
               <h3 className={styles.cardTitle}>CUSTOMER FOCUSED</h3>
               <div className={styles.cardDivider}></div>
-              <p className={styles.cardDesc}>We listen, collaborate, and deliver solutions tailored to your needs.</p>
+              <p className={styles.cardDesc}>We work closely with every customer to provide responsive communication, technical support, and manufacturing solutions tailored to project requirements.</p>
             </div>
 
             {/* Card 4 */}
@@ -78,7 +78,7 @@ export default function WhyChooseUs() {
               </div>
               <h3 className={styles.cardTitle}>ADVANCED TECHNOLOGY</h3>
               <div className={styles.cardDivider}></div>
-              <p className={styles.cardDesc}>3, 4 & 5-axis CNC machines and modern inspection equipment.</p>
+              <p className={styles.cardDesc}>Advanced 3, 4 & 5-axis CNC machining, CAD/CAM programming, and modern inspection equipment for complex manufacturing requirements.</p>
             </div>
 
             {/* Card 5 */}

@@ -14,16 +14,21 @@ const navLinks = [
     dropdown: [
       { href: "/cnc-milling-services", label: "CNC Milling" },
       { href: "/cnc-turning-services", label: "CNC Turning" },
-      { href: "/grinding-services", label: "Grinding" }
+      { href: "/what-we-offer#service-details", label: "Prototype & Production" },
+      { href: "/what-we-offer#service-details", label: "Secondary Services" },
+      { href: "/quality-control", label: "Quality Assurance" },
     ]
   },
   {
     href: "/what-we-offer#capabilities",
     label: "Capabilities",
     dropdown: [
-      { href: "/quality-control", label: "Quality Control" },
-      { href: "/facilities-equipment", label: "Facilities & Equipment" },
-      { href: "/materials", label: "Materials" }
+      { href: "/what-we-offer#capabilities", label: "CNC Milling Capabilities" },
+      { href: "/what-we-offer#capabilities", label: "CNC Turning Capabilities" },
+      { href: "/quality-control", label: "Quality Assurance & Inspection" },
+      { href: "/what-we-offer#capabilities", label: "Engineering & CAD/CAM" },
+      { href: "/what-we-offer#capabilities", label: "Secondary Services" },
+      { href: "/facilities-equipment", label: "Equipment List" },
     ]
   },
   { href: "/industries-served", label: "Industries" },
@@ -100,7 +105,7 @@ export default function Navbar() {
                   {link.dropdown && (
                     <ul className={`${styles.dropdownMenu} ${isOpen ? styles.dropdownMenuOpen : ""}`}>
                       {link.dropdown.map((sublink) => (
-                        <li key={sublink.href}>
+                        <li key={`${sublink.href}-${sublink.label}`}>
                           <Link
                             href={sublink.href}
                             className={styles.dropdownLink}
@@ -121,7 +126,7 @@ export default function Navbar() {
             className={`btn btn--primary ${styles.navCta}`}
             onClick={() => setMenuOpen(false)}
           >
-            Request Quote
+            Request a Quote
           </Link>
         </nav>
 
