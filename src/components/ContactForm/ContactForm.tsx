@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud, ShieldCheck } from "lucide-react";
 import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
@@ -124,6 +125,17 @@ export default function ContactForm() {
                     {errorMsg}
                   </div>
                 )}
+
+                <div className={styles.privacyNotice}>
+                  <ShieldCheck size={16} className={styles.privacyShieldIcon} />
+                  <span>
+                    By submitting this request, you agree to our{" "}
+                    <Link href="/privacy" className={styles.privacyLink} target="_blank">
+                      Privacy Policy
+                    </Link>
+                    . We respect your privacy and never sell or share your data or uploaded files.
+                  </span>
+                </div>
 
                 <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
                   {isSubmitting ? "SENDING..." : "REQUEST A QUOTE"} <ArrowRight size={18} />

@@ -209,6 +209,37 @@
 }
 
 /* Submit Button */
+.privacyNotice {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-sm);
+}
+
+.privacyShieldIcon {
+  color: var(--color-cta);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.privacyLink {
+  color: var(--color-cta);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.privacyLink:hover {
+  color: var(--color-dark);
+}
+
 .submitBtn {
   display: inline-flex;
   align-items: center;
