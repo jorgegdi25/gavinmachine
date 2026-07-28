@@ -110,15 +110,12 @@ export default function AboutSummary() {
               ))}
             </div>
 
-            {/* Experience Box Overlay */}
+            {/* Experience Box Overlay with integrated CTA button */}
             <div className={styles.experienceBox}>
               <span className={styles.expNumber}>1990</span>
               <span className={styles.expTitle}>30+ Years of<br />Precision Manufacturing</span>
               <span className={styles.expSubtitle}>In Massachusetts</span>
-            </div>
-            
-            {/* Button over the image */}
-            <div className={styles.imageAction}>
+              
               <Link href="/about-us" className={styles.imageBtn}>
                 MORE ABOUT US <ArrowRight size={18} />
               </Link>

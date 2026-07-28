@@ -149,44 +149,38 @@
   z-index: 20;
   background-color: rgba(5, 25, 51, 0.92); /* Rich dark blue */
   backdrop-filter: blur(8px);
-  padding: 2.5rem 2rem;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   color: var(--color-white);
   border-top-right-radius: var(--radius-md);
+  max-width: 88%;
 }
 
 .expNumber {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 800;
   line-height: 1;
   color: #3b82f6; /* Lighter blue to pop */
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .expTitle {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
   letter-spacing: 0.5px;
 }
 
 .expSubtitle {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #3b82f6;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-/* Button on Image */
-.imageAction {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 20;
+  margin-bottom: 1.25rem;
 }
 
 .imageBtn {
@@ -195,19 +189,19 @@
   gap: 0.5rem;
   background-color: var(--color-cta);
   color: var(--color-white);
-  padding: 0.8rem 1.5rem;
-  font-size: 0.9rem;
+  padding: 0.75rem 1.35rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 }
 
 .imageBtn:hover {
   background-color: var(--color-cta-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
 }
 
 /* Right Column: Text */
