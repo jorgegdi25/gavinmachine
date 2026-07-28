@@ -486,3 +486,18 @@
 .ctaIcon {
   color: var(--color-cta);
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 7.5rem 0 4rem;
+  }
+  .sectionWrapper {
+    padding: 4rem 0;
+  }
+  .ctaRight {
+    min-width: 100%;
+  }
+  .finalCta {
+    padding: 3.5rem 0;
+  }
+}

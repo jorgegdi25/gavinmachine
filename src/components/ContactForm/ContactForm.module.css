@@ -89,6 +89,16 @@
   }
 }
 
+@media (max-width: 576px) {
+  .formBox {
+    padding: 1.5rem 1.2rem;
+  }
+  .submitBtn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
