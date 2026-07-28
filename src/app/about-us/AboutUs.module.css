@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   background-color: var(--color-dark);
-  background-image: url('../../../public/images/cnc_hero_bg.png');
+  background-image: url('../../../public/images/cnc_hero_bg.webp');
   background-size: cover;
   background-position: center;
   padding: 8rem 0 4rem;

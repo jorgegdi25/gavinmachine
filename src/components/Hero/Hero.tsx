@@ -1,7 +1,7 @@
 import styles from "./Hero.module.css";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import heroPoster from "../../../public/images/cnc_hero_bg.png";
+import heroPoster from "../../../public/images/cnc_hero_bg.webp";
 import heroVideo from "../../../public/hero-video.mp4";
 
 export default function Hero() {
