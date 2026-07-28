@@ -7,9 +7,6 @@ export async function POST(request: Request) {
     const company = (formData.get("company") as string) || "N/A";
     const email = (formData.get("email") as string) || "";
     const phone = (formData.get("phone") as string) || "N/A";
-    const message = (formData.get("message") as string) || "";
-    const file = formData.get("file") as File | null;
-
     const apiKey = process.env.RESEND_API_KEY;
 
     if (!apiKey) {
