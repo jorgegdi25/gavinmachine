@@ -7,16 +7,37 @@ import styles from "./ContactForm.module.css";
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    setErrorMsg(null);
+
+    const formData = new FormData(e.currentTarget);
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New Quote Request - Gavin Machine");
+    formData.append("from_name", "Gavin Machine Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSuccess(true);
+      } else {
+        setErrorMsg(data.message || "Unable to send message. Please try again.");
+      }
+    } catch (err) {
+      setErrorMsg("Connection error. Please check your network and try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
+    }
   };
 
   return (
@@ -101,6 +122,12 @@ export default function ContactForm() {
                     </div>
                   </div>
                 </div>
+
+                {errorMsg && (
+                  <div style={{ color: "#ef4444", backgroundColor: "#fef2f2", border: "1px solid #fca5a5", padding: "0.75rem 1rem", borderRadius: "4px", fontSize: "0.9rem", fontWeight: 600 }}>
+                    {errorMsg}
+                  </div>
+                )}
 
                 <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
                   {isSubmitting ? "SENDING..." : "REQUEST A QUOTE"} <ArrowRight size={18} />
