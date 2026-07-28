@@ -17,7 +17,7 @@ export default function Home() {
       <Services />
       <WhyChooseUs />
       <Industries />
-      <Gallery />
+      <Gallery limit={6} />
       <FAQ />
       <ContactForm />
     </>
