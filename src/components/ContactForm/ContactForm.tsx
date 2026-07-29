@@ -107,17 +107,31 @@ export default function ContactForm() {
                   ></textarea>
                 </div>
 
-                {/* File Upload Restored */}
+                {/* File Upload & Cloud Link Options */}
                 <div className={styles.formGroup}>
                   <label htmlFor="file" className={styles.inputLabel}>Upload Drawings/Specs (Optional)</label>
                   <div className={styles.fileUploadBox}>
-                    <input type="file" id="file" name="file" className={styles.fileInput} accept=".pdf,.doc,.docx,.dwg,.dxf,.step,.stp" />
+                    <input type="file" id="file" name="file" className={styles.fileInput} accept=".pdf,.doc,.docx,.dwg,.dxf,.step,.stp,.zip,.rar" />
                     <div className={styles.fileUploadContent}>
                       <UploadCloud size={32} className={styles.uploadIcon} />
                       <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
-                      <span className={styles.uploadTextSub}>PDF, DOC, DWG, DXF, STEP (Max 10MB)</span>
+                      <span className={styles.uploadTextSub}>PDF, CAD (.STEP, .DWG, .DXF), ZIP (Max 10MB)</span>
                     </div>
                   </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="cloudLink" className={styles.inputLabel}>Or Link to CAD Files (Google Drive, WeTransfer, Dropbox)</label>
+                  <input
+                    type="url"
+                    id="cloudLink"
+                    name="cloudLink"
+                    className={styles.input}
+                    placeholder="https://drive.google.com/... or https://we.tl/..."
+                  />
+                  <span style={{ fontSize: "0.8rem", color: "var(--color-text-secondary)", marginTop: "2px" }}>
+                    Recommended for large 3D CAD assemblies or files exceeding 10MB.
+                  </span>
                 </div>
 
                 {errorMsg && (
