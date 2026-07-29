@@ -209,9 +209,9 @@ export default function Grinding() {
               REQUEST A QUOTE
             </Link>
             
-            <a href="mailto:info@gavinmachine.com" className={styles.ctaInfoBox}>
+            <a href="mailto:Paddy@gqmachine.com" className={styles.ctaInfoBox}>
               <Mail size={20} className={styles.ctaIcon} />
-              <span>info@gavinmachine.com</span>
+              <span>Paddy@gqmachine.com</span>
             </a>
             
             <a href="tel:6174628536" className={styles.ctaInfoBox}>

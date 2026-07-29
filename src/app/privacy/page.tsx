@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
           <h2 style={{ marginBottom: "var(--space-sm)", marginTop: "var(--space-xl)" }}>Contact Us</h2>
           <p style={{ marginBottom: "var(--space-lg)" }}>
             If you have questions about this Privacy Policy, contact us at{" "}
-            <a href="mailto:info@gavinmachine.com" style={{ color: "var(--color-cta)", fontWeight: 600 }}>info@gavinmachine.com</a>{" "}
+            <a href="mailto:Paddy@gqmachine.com" style={{ color: "var(--color-cta)", fontWeight: 600 }}>Paddy@gqmachine.com</a>{" "}
             or (617) 462-8536.
           </p>
 

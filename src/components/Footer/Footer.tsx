@@ -120,7 +120,7 @@ export default function Footer() {
                 <a href="tel:+16174628536">(617) 462-8536</a>
               </li>
               <li>
-                <a href="mailto:info@gavinmachine.com">info@gavinmachine.com</a>
+                <a href="mailto:Paddy@gqmachine.com">Paddy@gqmachine.com</a>
               </li>
             </ul>
           </div>

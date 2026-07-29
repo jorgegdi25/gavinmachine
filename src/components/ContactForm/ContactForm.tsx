@@ -175,7 +175,7 @@ export default function ContactForm() {
                   </div>
                   <div className={styles.infoText}>
                     <strong>Email</strong>
-                    <a href="mailto:info@gavinmachine.com">info@gavinmachine.com</a>
+                    <a href="mailto:Paddy@gqmachine.com">Paddy@gqmachine.com</a>
                   </div>
                 </li>
                 <li>
