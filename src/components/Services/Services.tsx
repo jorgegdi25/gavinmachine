@@ -108,7 +108,7 @@ export default function Services() {
             {/* Card 4 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.service2})` }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.serviceSecondary})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Secondary Services</h3>
@@ -124,7 +124,7 @@ export default function Services() {
             {/* Card 5 */}
             <div className={styles.serviceCard}>
               <div className={styles.cardImageWrapper}>
-                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.service2})` }}></div>
+                <div className={styles.cardImage} style={{ backgroundImage: `url(${media.serviceQuality})` }}></div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Quality Assurance</h3>

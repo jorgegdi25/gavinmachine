@@ -12,6 +12,8 @@ import industriesBackground from "../../public/images/industries-bg.webp";
 import service1 from "../../public/images/service1.webp";
 import service2 from "../../public/images/service2.webp";
 import service3 from "../../public/images/service3.webp";
+import serviceSecondary from "../../public/images/service-secondary.webp";
+import serviceQuality from "../../public/images/service-quality.webp";
 import whyChooseBackground from "../../public/images/why-choose-bg.webp";
 import logoFooter from "../../public/logo-footer.webp";
 import logoGavin from "../../public/logo-gavin.webp";
@@ -55,6 +57,8 @@ export const media = {
   service1: service1.src,
   service2: service2.src,
   service3: service3.src,
+  serviceSecondary: serviceSecondary.src,
+  serviceQuality: serviceQuality.src,
   whyChooseBackground: whyChooseBackground.src,
   gallery01: gallery01.src,
   gallery02: gallery02.src,
