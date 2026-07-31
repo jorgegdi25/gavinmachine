@@ -11,50 +11,60 @@ export async function POST(request: Request) {
     const cloudLink = (incomingFormData.get("cloudLink") as string) || "";
     const file = incomingFormData.get("file") as File | null;
 
-    const recipientEmail = process.env.CONTACT_NOTIFICATION_EMAIL || "Paddy@gqmachine.com";
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
 
-    // Prepare FormSubmit payload
-    const formSubmitData = new FormData();
-    formSubmitData.append("Full Name", name);
-    formSubmitData.append("Company", company);
-    formSubmitData.append("Email", email);
-    formSubmitData.append("Phone", phone);
-    formSubmitData.append("Project Details & Specifications", message);
-    if (cloudLink) {
-      formSubmitData.append("Cloud CAD Files Link (Google Drive / WeTransfer)", cloudLink);
+    if (!accessKey) {
+      return NextResponse.json(
+        { success: false, message: "Web3Forms Access Key is not configured in environment variables." },
+        { status: 500 }
+      );
     }
-    formSubmitData.append("_replyto", email);
-    formSubmitData.append("_subject", `New Quote Request: ${name} ${company !== "N/A" ? `(${company})` : ""}`);
-    formSubmitData.append("_template", "table");
-    formSubmitData.append("_captcha", "false");
+
+    // Prepare Web3Forms payload
+    const formData = new FormData();
+    formData.append("access_key", accessKey);
+    formData.append("subject", `New Quote Request: ${name} ${company !== "N/A" ? `(${company})` : ""}`);
+    formData.append("from_name", name);
+    formData.append("replyto", email);
+    
+    // Custom Fields
+    formData.append("Full Name", name);
+    formData.append("Company", company);
+    formData.append("Email", email);
+    formData.append("Phone", phone);
+    formData.append("Project Details & Specifications", message);
+    
+    if (cloudLink) {
+      formData.append("Cloud CAD Files Link", cloudLink);
+    }
 
     if (file && file.size > 0 && file.name) {
-      formSubmitData.append("attachment", file);
+      formData.append("attachment", file);
     }
 
-    const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         Accept: "application/json",
       },
-      body: formSubmitData,
+      body: formData,
     });
 
     const data = await response.json();
 
-    if (!response.ok || data.success === "false") {
+    if (!response.ok || !data.success) {
       return NextResponse.json(
-        { success: false, message: data.message || "Failed to deliver message via FormSubmit." },
+        { success: false, message: data.message || "Failed to deliver message via Web3Forms." },
         { status: response.status || 400 }
       );
     }
 
     return NextResponse.json({ success: true, message: data.message });
   } catch (error: any) {
+    console.error("Error sending email:", error);
     return NextResponse.json(
       { success: false, message: error.message || "An unexpected error occurred." },
       { status: 500 }
     );
   }
 }
-
