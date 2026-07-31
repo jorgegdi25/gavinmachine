@@ -9,6 +9,23 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        setErrorMsg("File is too large. Maximum size is 10MB. Please use the cloud link option below for larger files.");
+        e.target.value = "";
+        setFileName(null);
+        return;
+      }
+      setFileName(file.name);
+      setErrorMsg(null);
+    } else {
+      setFileName(null);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -111,11 +128,21 @@ export default function ContactForm() {
                 <div className={styles.formGroup}>
                   <label htmlFor="file" className={styles.inputLabel}>Upload Drawings/Specs (Optional)</label>
                   <div className={styles.fileUploadBox}>
-                    <input type="file" id="file" name="file" className={styles.fileInput} accept=".pdf,.doc,.docx,.dwg,.dxf,.step,.stp,.zip,.rar" />
+                    <input type="file" id="file" name="file" className={styles.fileInput} onChange={handleFileChange} />
                     <div className={styles.fileUploadContent}>
-                      <UploadCloud size={32} className={styles.uploadIcon} />
-                      <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
-                      <span className={styles.uploadTextSub}>PDF, CAD (.STEP, .DWG, .DXF), ZIP (Max 10MB)</span>
+                      {fileName ? (
+                        <>
+                          <CheckCircle size={32} className={styles.uploadIcon} style={{ color: "#16a34a" }} />
+                          <span className={styles.uploadTextMain}>{fileName}</span>
+                          <span className={styles.uploadTextSub}>File selected. Click again to change.</span>
+                        </>
+                      ) : (
+                        <>
+                          <UploadCloud size={32} className={styles.uploadIcon} />
+                          <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
+                          <span className={styles.uploadTextSub}>Any file type accepted (Max 10MB)</span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
