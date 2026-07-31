@@ -33,14 +33,20 @@ export default function ContactForm() {
     setErrorMsg(null);
 
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "4b96b02a-3bd8-49b7-8f7c-012f79db1645");
-    formData.append("subject", `New Quote Request: ${formData.get("name")} ${formData.get("company") ? `(${formData.get("company")})` : ""}`);
-    formData.append("from_name", formData.get("name") as string);
-    formData.append("replyto", formData.get("email") as string);
+    
+    // FormSubmit specific hidden fields
+    formData.append("_subject", `New Quote Request from ${formData.get("name")}`);
+    formData.append("_replyto", formData.get("email") as string);
+    formData.append("_captcha", "false"); // Disable reCAPTCHA to prevent redirects
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // CURRENT EMAIL SET TO: luisagavin8@gmail.com
+      // When ready for production, change the email below to Paddy's email.
+      const response = await fetch("https://formsubmit.co/ajax/luisagavin8@gmail.com", {
         method: "POST",
+        headers: {
+          "Accept": "application/json",
+        },
         body: formData,
       });
 
@@ -128,9 +134,32 @@ export default function ContactForm() {
                   ></textarea>
                 </div>
 
+                {/* File Upload Box */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="file" className={styles.inputLabel}>Upload Drawings/Specs (Optional)</label>
+                  <div className={styles.fileUploadBox}>
+                    <input type="file" id="file" name="attachment" className={styles.fileInput} onChange={handleFileChange} />
+                    <div className={styles.fileUploadContent}>
+                      {fileName ? (
+                        <>
+                          <CheckCircle size={32} className={styles.uploadIcon} style={{ color: "#16a34a" }} />
+                          <span className={styles.uploadTextMain}>{fileName}</span>
+                          <span className={styles.uploadTextSub}>File selected. Click again to change.</span>
+                        </>
+                      ) : (
+                        <>
+                          <UploadCloud size={32} className={styles.uploadIcon} />
+                          <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
+                          <span className={styles.uploadTextSub}>Any file type accepted (Max 10MB)</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
                 {/* Cloud Link Option ONLY */}
                 <div className={styles.formGroup}>
-                  <label htmlFor="cloudLink" className={styles.inputLabel}>CAD Files Link (Google Drive, WeTransfer, Dropbox)</label>
+                  <label htmlFor="cloudLink" className={styles.inputLabel}>Or Link to CAD Files (Google Drive, WeTransfer, Dropbox)</label>
                   <input
                     type="url"
                     id="cloudLink"
