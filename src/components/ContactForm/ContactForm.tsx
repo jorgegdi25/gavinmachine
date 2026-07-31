@@ -33,20 +33,24 @@ export default function ContactForm() {
     setErrorMsg(null);
 
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "4b96b02a-3bd8-49b7-8f7c-012f79db1645");
-    formData.append("subject", `New Quote Request: ${formData.get("name")} ${formData.get("company") ? `(${formData.get("company")})` : ""}`);
-    formData.append("from_name", formData.get("name") as string);
-    formData.append("replyto", formData.get("email") as string);
+    
+    // FormSubmit specific hidden fields
+    formData.append("_subject", `New Quote Request from ${formData.get("name")}`);
+    formData.append("_replyto", formData.get("email") as string);
+    formData.append("_captcha", "false"); // Disable reCAPTCHA if you want, or remove this line to keep it
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://formsubmit.co/ajax/Paddy@gqmachine.com", {
         method: "POST",
+        headers: {
+          "Accept": "application/json",
+        },
         body: formData,
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (data.success || response.ok) {
         setIsSuccess(true);
       } else {
         setErrorMsg(data.message || "Unable to send message. Please try again.");
