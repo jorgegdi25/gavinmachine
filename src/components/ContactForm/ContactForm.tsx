@@ -40,6 +40,12 @@ export default function ContactForm() {
         body: formData,
       });
 
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        setErrorMsg("Server error. Please try again later or contact us directly at Paddy@gqmachine.com");
+        return;
+      }
+
       const data = await response.json();
 
       if (data.success) {
@@ -48,7 +54,7 @@ export default function ContactForm() {
         setErrorMsg(data.message || "Unable to send message. Please try again.");
       }
     } catch (err) {
-      setErrorMsg("Connection error. Please check your network and try again.");
+      setErrorMsg("Connection error. Please try again or email us at Paddy@gqmachine.com");
     } finally {
       setIsSubmitting(false);
     }
