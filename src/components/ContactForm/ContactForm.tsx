@@ -33,24 +33,20 @@ export default function ContactForm() {
     setErrorMsg(null);
 
     const formData = new FormData(e.currentTarget);
-    
-    // FormSubmit specific hidden fields
-    formData.append("_subject", `New Quote Request from ${formData.get("name")}`);
-    formData.append("_replyto", formData.get("email") as string);
-    formData.append("_captcha", "false"); // Disable reCAPTCHA if you want, or remove this line to keep it
+    formData.append("access_key", "4b96b02a-3bd8-49b7-8f7c-012f79db1645");
+    formData.append("subject", `New Quote Request: ${formData.get("name")} ${formData.get("company") ? `(${formData.get("company")})` : ""}`);
+    formData.append("from_name", formData.get("name") as string);
+    formData.append("replyto", formData.get("email") as string);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/Paddy@gqmachine.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
         body: formData,
       });
 
       const data = await response.json();
 
-      if (data.success || response.ok) {
+      if (data.success) {
         setIsSuccess(true);
       } else {
         setErrorMsg(data.message || "Unable to send message. Please try again.");
@@ -132,31 +128,9 @@ export default function ContactForm() {
                   ></textarea>
                 </div>
 
-                {/* File Upload & Cloud Link Options */}
+                {/* Cloud Link Option ONLY */}
                 <div className={styles.formGroup}>
-                  <label htmlFor="file" className={styles.inputLabel}>Upload Drawings/Specs (Optional)</label>
-                  <div className={styles.fileUploadBox}>
-                    <input type="file" id="file" name="file" className={styles.fileInput} onChange={handleFileChange} />
-                    <div className={styles.fileUploadContent}>
-                      {fileName ? (
-                        <>
-                          <CheckCircle size={32} className={styles.uploadIcon} style={{ color: "#16a34a" }} />
-                          <span className={styles.uploadTextMain}>{fileName}</span>
-                          <span className={styles.uploadTextSub}>File selected. Click again to change.</span>
-                        </>
-                      ) : (
-                        <>
-                          <UploadCloud size={32} className={styles.uploadIcon} />
-                          <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
-                          <span className={styles.uploadTextSub}>Any file type accepted (Max 10MB)</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="cloudLink" className={styles.inputLabel}>Or Link to CAD Files (Google Drive, WeTransfer, Dropbox)</label>
+                  <label htmlFor="cloudLink" className={styles.inputLabel}>CAD Files Link (Google Drive, WeTransfer, Dropbox)</label>
                   <input
                     type="url"
                     id="cloudLink"
@@ -165,7 +139,7 @@ export default function ContactForm() {
                     placeholder="https://drive.google.com/... or https://we.tl/..."
                   />
                   <span style={{ fontSize: "0.8rem", color: "var(--color-text-secondary)", marginTop: "2px" }}>
-                    Recommended for large 3D CAD assemblies or files exceeding 10MB.
+                    Please upload your drawings/specs to a cloud service and paste the shareable link here.
                   </span>
                 </div>
 
