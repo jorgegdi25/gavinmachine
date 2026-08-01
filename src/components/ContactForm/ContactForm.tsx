@@ -40,9 +40,8 @@ export default function ContactForm() {
     formData.append("_captcha", "false"); // Disable reCAPTCHA to prevent redirects
 
     try {
-      // CURRENT EMAIL SET TO: luisagavin8@gmail.com
-      // When ready for production, change the email below to Paddy's email.
-      const response = await fetch("https://formsubmit.co/ajax/luisagavin8@gmail.com", {
+      // CURRENT EMAIL SET TO: Paddy@gqmachine.com
+      const response = await fetch("https://formsubmit.co/ajax/Paddy@gqmachine.com", {
         method: "POST",
         headers: {
           "Accept": "application/json",
