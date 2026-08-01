@@ -12,15 +12,27 @@ export default function ContactForm() {
   const [fileName, setFileName] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 10 * 1024 * 1024) {
-        setErrorMsg("File is too large. Maximum size is 10MB. Please use the cloud link option below for larger files.");
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      let totalSize = 0;
+      const fileNames = [];
+      for (let i = 0; i < files.length; i++) {
+        totalSize += files[i].size;
+        fileNames.push(files[i].name);
+      }
+      
+      if (totalSize > 15 * 1024 * 1024) {
+        setErrorMsg("Files are too large. Maximum total size is 15MB. Please use the cloud link option below for larger files.");
         e.target.value = "";
         setFileName(null);
         return;
       }
-      setFileName(file.name);
+      
+      if (files.length === 1) {
+        setFileName(fileNames[0]);
+      } else {
+        setFileName(`${files.length} files selected`);
+      }
       setErrorMsg(null);
     } else {
       setFileName(null);
@@ -137,7 +149,7 @@ export default function ContactForm() {
                 <div className={styles.formGroup}>
                   <label htmlFor="file" className={styles.inputLabel}>Upload Drawings/Specs (Optional)</label>
                   <div className={styles.fileUploadBox}>
-                    <input type="file" id="file" name="attachment" className={styles.fileInput} onChange={handleFileChange} />
+                    <input type="file" id="file" name="attachment" className={styles.fileInput} onChange={handleFileChange} multiple />
                     <div className={styles.fileUploadContent}>
                       {fileName ? (
                         <>
