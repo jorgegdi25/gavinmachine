@@ -1,79 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud, ShieldCheck } from "lucide-react";
 import styles from "./ContactForm.module.css";
 
-export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+function ContactFormInner() {
+  const searchParams = useSearchParams();
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+
+  // Detect redirect back from FormSubmit after successful submission
+  useEffect(() => {
+    if (searchParams.get("sent") === "true") {
+      setIsSuccess(true);
+      // Clean up URL without reloading
+      window.history.replaceState({}, "", window.location.pathname + "#contact");
+    }
+  }, [searchParams]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
-      let totalSize = 0;
-      const fileNames = [];
-      for (let i = 0; i < files.length; i++) {
-        totalSize += files[i].size;
-        fileNames.push(files[i].name);
-      }
-      
-      if (totalSize > 15 * 1024 * 1024) {
-        setErrorMsg("Files are too large. Maximum total size is 15MB. Please use the cloud link option below for larger files.");
-        e.target.value = "";
-        setFileName(null);
-        return;
-      }
-      
       if (files.length === 1) {
-        setFileName(fileNames[0]);
+        setFileName(files[0].name);
       } else {
         setFileName(`${files.length} files selected`);
       }
-      setErrorMsg(null);
     } else {
       setFileName(null);
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setErrorMsg(null);
-
-    const formData = new FormData(e.currentTarget);
-    
-    // FormSubmit specific hidden fields
-    formData.append("_subject", `New Quote Request from ${formData.get("name")}`);
-    formData.append("_replyto", formData.get("email") as string);
-    formData.append("_captcha", "false"); // Disable reCAPTCHA to prevent redirects
-
-    try {
-      // CURRENT EMAIL SET TO: Paddy@gqmachine.com
-      const response = await fetch("https://formsubmit.co/ajax/Paddy@gqmachine.com", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setIsSuccess(true);
-      } else {
-        setErrorMsg(data.message || "Unable to send message. Please try again.");
-      }
-    } catch (err) {
-      setErrorMsg("Connection error. Please try again or email us at Paddy@gqmachine.com");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  // The current URL of the site, used for _next redirect
+  const siteUrl = typeof window !== "undefined"
+    ? `${window.location.origin}${window.location.pathname}?sent=true#contact`
+    : "https://gavinmachine.com/?sent=true#contact";
 
   return (
     <section className={styles.contactSection} id="contact">
@@ -86,7 +49,7 @@ export default function ContactForm() {
             <span className={styles.label}>REQUEST A QUOTE</span>
           </div>
           <h2 className={styles.title}>
-            <span className={styles.titleDark}>Let's Build The Right</span><br />
+            <span className={styles.titleDark}>Let&apos;s Build The Right</span><br />
             <span className={styles.titleLight}>Solution For Your Project.</span>
           </h2>
           <p className={styles.subtitle}>
@@ -110,7 +73,18 @@ export default function ContactForm() {
                 </button>
               </div>
             ) : (
-              <form className={styles.form} onSubmit={handleSubmit}>
+              <form
+                className={styles.form}
+                action="https://formsubmit.co/Paddy@gqmachine.com"
+                method="POST"
+                encType="multipart/form-data"
+              >
+                {/* FormSubmit hidden config fields */}
+                <input type="hidden" name="_next" value={siteUrl} />
+                <input type="hidden" name="_subject" value="New Quote Request from Website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
                     <label htmlFor="name" className={styles.inputLabel}>Full Name *</label>
@@ -161,14 +135,14 @@ export default function ContactForm() {
                         <>
                           <UploadCloud size={32} className={styles.uploadIcon} />
                           <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
-                          <span className={styles.uploadTextSub}>Any file type accepted (Max 10MB)</span>
+                          <span className={styles.uploadTextSub}>Any file type accepted (Max 5MB per file)</span>
                         </>
                       )}
                     </div>
                   </div>
                 </div>
 
-                {/* Cloud Link Option ONLY */}
+                {/* Cloud Link Option */}
                 <div className={styles.formGroup}>
                   <label htmlFor="cloudLink" className={styles.inputLabel}>Or Link to CAD Files (Google Drive, WeTransfer, Dropbox)</label>
                   <input
@@ -179,15 +153,9 @@ export default function ContactForm() {
                     placeholder="https://drive.google.com/... or https://we.tl/..."
                   />
                   <span style={{ fontSize: "0.8rem", color: "var(--color-text-secondary)", marginTop: "2px" }}>
-                    Please upload your drawings/specs to a cloud service and paste the shareable link here.
+                    Recommended for large files or multiple CAD assemblies.
                   </span>
                 </div>
-
-                {errorMsg && (
-                  <div style={{ color: "#ef4444", backgroundColor: "#fef2f2", border: "1px solid #fca5a5", padding: "0.75rem 1rem", borderRadius: "4px", fontSize: "0.9rem", fontWeight: 600 }}>
-                    {errorMsg}
-                  </div>
-                )}
 
                 <div className={styles.privacyNotice}>
                   <ShieldCheck size={16} className={styles.privacyShieldIcon} />
@@ -200,8 +168,8 @@ export default function ContactForm() {
                   </span>
                 </div>
 
-                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                  {isSubmitting ? "SENDING..." : "REQUEST A QUOTE"} <ArrowRight size={18} />
+                <button type="submit" className={styles.submitBtn}>
+                  REQUEST A QUOTE <ArrowRight size={18} />
                 </button>
               </form>
             )}
@@ -270,5 +238,14 @@ export default function ContactForm() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Wrap with Suspense because useSearchParams requires it in Next.js
+export default function ContactForm() {
+  return (
+    <Suspense fallback={null}>
+      <ContactFormInner />
+    </Suspense>
   );
 }
