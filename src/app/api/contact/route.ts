@@ -100,10 +100,11 @@ export async function POST(request: Request) {
     if (!resendResponse.ok) {
       const errorData = await resendResponse.json().catch(() => ({}));
       console.error("Resend API error:", errorData);
+      const resendMsg = (errorData as any)?.message || (errorData as any)?.error?.message || "";
       return NextResponse.json(
         {
           success: false,
-          message: "Failed to send email. Please try again or contact us directly.",
+          message: `Email error: ${resendMsg || resendResponse.statusText}. Please email us directly at Paddy@gqmachine.com`,
         },
         { status: 500 }
       );
