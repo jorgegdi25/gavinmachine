@@ -89,7 +89,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: "Gavin Machine Website <onboarding@resend.dev>",
-        to: ["Paddy@gqmachine.com"],
+        to: ["jorgegonzalezmejia@gmail.com"],
         reply_to: email,
         subject: `New Quote Request: ${name}${company ? ` (${company})` : ""}`,
         html: htmlContent,
