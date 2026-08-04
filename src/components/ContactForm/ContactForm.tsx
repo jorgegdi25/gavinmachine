@@ -2,26 +2,27 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud, ShieldCheck } from "lucide-react";
+import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud, ShieldCheck, X } from "lucide-react";
 import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      if (files.length === 1) {
-        setFileName(files[0].name);
-      } else {
-        setFileName(`${files.length} files selected`);
-      }
-    } else {
-      setFileName(null);
+    const newFiles = e.target.files;
+    if (newFiles && newFiles.length > 0) {
+      // Accumulate files instead of replacing
+      setSelectedFiles(prev => [...prev, ...Array.from(newFiles)]);
+      // Reset input so same file can be re-added if needed
+      e.target.value = "";
     }
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,6 +32,12 @@ export default function ContactForm() {
 
     try {
       const formData = new FormData(e.currentTarget);
+
+      // Remove the empty native file input and append accumulated files
+      formData.delete("attachment");
+      for (const file of selectedFiles) {
+        formData.append("attachment", file);
+      }
 
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -134,21 +141,61 @@ export default function ContactForm() {
                   <div className={styles.fileUploadBox}>
                     <input type="file" id="file" name="attachment" className={styles.fileInput} onChange={handleFileChange} multiple />
                     <div className={styles.fileUploadContent}>
-                      {fileName ? (
-                        <>
-                          <CheckCircle size={32} className={styles.uploadIcon} style={{ color: "#16a34a" }} />
-                          <span className={styles.uploadTextMain}>{fileName}</span>
-                          <span className={styles.uploadTextSub}>File(s) selected. Click again to change.</span>
-                        </>
-                      ) : (
-                        <>
-                          <UploadCloud size={32} className={styles.uploadIcon} />
-                          <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
-                          <span className={styles.uploadTextSub}>Any file type accepted. Multiple files allowed.</span>
-                        </>
-                      )}
+                      <UploadCloud size={32} className={styles.uploadIcon} />
+                      <span className={styles.uploadTextMain}>
+                        {selectedFiles.length > 0 ? "Click to add more files" : "Click to upload or drag and drop"}
+                      </span>
+                      <span className={styles.uploadTextSub}>Any file type accepted. Multiple files allowed.</span>
                     </div>
                   </div>
+
+                  {/* List of selected files */}
+                  {selectedFiles.length > 0 && (
+                    <div style={{ marginTop: "8px", display: "flex", flexDirection: "column", gap: "4px" }}>
+                      {selectedFiles.map((file, index) => (
+                        <div
+                          key={`${file.name}-${index}`}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            padding: "6px 10px",
+                            backgroundColor: "#f0fdf4",
+                            border: "1px solid #bbf7d0",
+                            borderRadius: "4px",
+                            fontSize: "0.85rem",
+                          }}
+                        >
+                          <span style={{ display: "flex", alignItems: "center", gap: "6px", color: "#166534" }}>
+                            <CheckCircle size={16} />
+                            {file.name}
+                            <span style={{ color: "#6b7280", fontSize: "0.75rem" }}>
+                              ({(file.size / 1024).toFixed(0)} KB)
+                            </span>
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => removeFile(index)}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              cursor: "pointer",
+                              color: "#dc2626",
+                              padding: "2px",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                            aria-label={`Remove ${file.name}`}
+                          >
+                            <X size={16} />
+                          </button>
+                        </div>
+                      ))}
+                      <span style={{ fontSize: "0.8rem", color: "var(--color-text-secondary)" }}>
+                        {selectedFiles.length} file(s) ready to send
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Cloud Link Option */}
