@@ -2,68 +2,113 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const incomingFormData = await request.formData();
-    const name = (incomingFormData.get("name") as string) || "";
-    const company = (incomingFormData.get("company") as string) || "N/A";
-    const email = (incomingFormData.get("email") as string) || "";
-    const phone = (incomingFormData.get("phone") as string) || "N/A";
-    const message = (incomingFormData.get("message") as string) || "";
-    const cloudLink = (incomingFormData.get("cloudLink") as string) || "";
-    const file = incomingFormData.get("file") as File | null;
+    const formData = await request.formData();
 
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    const name = (formData.get("name") as string) || "";
+    const company = (formData.get("company") as string) || "";
+    const email = (formData.get("email") as string) || "";
+    const phone = (formData.get("phone") as string) || "";
+    const message = (formData.get("message") as string) || "";
+    const cloudLink = (formData.get("cloudLink") as string) || "";
 
-    if (!accessKey) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
       return NextResponse.json(
-        { success: false, message: "Web3Forms Access Key is not configured in environment variables." },
+        { success: false, message: "Email service is not configured." },
         { status: 500 }
       );
     }
 
-    // Prepare Web3Forms payload
-    const formData = new FormData();
-    formData.append("access_key", accessKey);
-    formData.append("subject", `New Quote Request: ${name} ${company !== "N/A" ? `(${company})` : ""}`);
-    formData.append("from_name", name);
-    formData.append("replyto", email);
-    
-    // Custom Fields
-    formData.append("Full Name", name);
-    formData.append("Company", company);
-    formData.append("Email", email);
-    formData.append("Phone", phone);
-    formData.append("Project Details & Specifications", message);
-    
-    if (cloudLink) {
-      formData.append("Cloud CAD Files Link", cloudLink);
+    // Process file attachments
+    const attachments: { filename: string; content: string }[] = [];
+    const files = formData.getAll("attachment");
+    for (const file of files) {
+      if (file instanceof File && file.size > 0) {
+        const buffer = Buffer.from(await file.arrayBuffer());
+        attachments.push({
+          filename: file.name,
+          content: buffer.toString("base64"),
+        });
+      }
     }
 
-    if (file && file.size > 0 && file.name) {
-      formData.append("attachment", file);
-    }
+    // Build a clean HTML email
+    const htmlContent = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px;">
+          New Quote Request
+        </h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 8px 12px; font-weight: bold; color: #475569; width: 140px;">Name</td>
+            <td style="padding: 8px 12px; color: #1e293b;">${name}</td>
+          </tr>
+          <tr style="background: #f8fafc;">
+            <td style="padding: 8px 12px; font-weight: bold; color: #475569;">Company</td>
+            <td style="padding: 8px 12px; color: #1e293b;">${company || "N/A"}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 12px; font-weight: bold; color: #475569;">Email</td>
+            <td style="padding: 8px 12px;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+          </tr>
+          <tr style="background: #f8fafc;">
+            <td style="padding: 8px 12px; font-weight: bold; color: #475569;">Phone</td>
+            <td style="padding: 8px 12px; color: #1e293b;">${phone || "N/A"}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 12px; font-weight: bold; color: #475569; vertical-align: top;">Project Details</td>
+            <td style="padding: 8px 12px; color: #1e293b; white-space: pre-wrap;">${message}</td>
+          </tr>
+          ${cloudLink ? `
+          <tr style="background: #f8fafc;">
+            <td style="padding: 8px 12px; font-weight: bold; color: #475569;">CAD Files Link</td>
+            <td style="padding: 8px 12px;"><a href="${cloudLink}" style="color: #2563eb;">${cloudLink}</a></td>
+          </tr>` : ""}
+        </table>
+        ${attachments.length > 0 ? `
+        <p style="margin-top: 16px; padding: 10px; background: #ecfdf5; border-radius: 6px; color: #065f46;">
+          📎 <strong>${attachments.length} file(s) attached</strong> to this email.
+        </p>` : ""}
+        <p style="margin-top: 24px; font-size: 12px; color: #94a3b8;">
+          Sent from the Gavin Machine website contact form.
+        </p>
+      </div>
+    `;
 
-    const response = await fetch("https://api.web3forms.com/submit", {
+    // Send via Resend API
+    const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Accept: "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
       },
-      body: formData,
+      body: JSON.stringify({
+        from: "Gavin Machine Website <onboarding@resend.dev>",
+        to: ["Paddy@gqmachine.com"],
+        reply_to: email,
+        subject: `New Quote Request: ${name}${company ? ` (${company})` : ""}`,
+        html: htmlContent,
+        attachments,
+      }),
     });
 
-    const data = await response.json();
-
-    if (!response.ok || !data.success) {
+    if (!resendResponse.ok) {
+      const errorData = await resendResponse.json().catch(() => ({}));
+      console.error("Resend API error:", errorData);
       return NextResponse.json(
-        { success: false, message: data.message || "Failed to deliver message via Web3Forms." },
-        { status: response.status || 400 }
+        {
+          success: false,
+          message: "Failed to send email. Please try again or contact us directly.",
+        },
+        { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, message: data.message });
-  } catch (error: any) {
-    console.error("Error sending email:", error);
+    return NextResponse.json({ success: true });
+  } catch (error: unknown) {
+    console.error("Contact form error:", error);
     return NextResponse.json(
-      { success: false, message: error.message || "An unexpected error occurred." },
+      { success: false, message: "An unexpected error occurred." },
       { status: 500 }
     );
   }

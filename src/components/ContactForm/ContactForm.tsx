@@ -1,24 +1,15 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight, UploadCloud, ShieldCheck } from "lucide-react";
 import styles from "./ContactForm.module.css";
 
-function ContactFormInner() {
-  const searchParams = useSearchParams();
+export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-
-  // Detect redirect back from FormSubmit after successful submission
-  useEffect(() => {
-    if (searchParams.get("sent") === "true") {
-      setIsSuccess(true);
-      // Clean up URL without reloading
-      window.history.replaceState({}, "", window.location.pathname + "#contact");
-    }
-  }, [searchParams]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -33,10 +24,39 @@ function ContactFormInner() {
     }
   };
 
-  // The current URL of the site, used for _next redirect
-  const siteUrl = typeof window !== "undefined"
-    ? `${window.location.origin}${window.location.pathname}?sent=true#contact`
-    : "https://gavinmachine.com/?sent=true#contact";
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      // Guard against non-JSON responses (e.g. Hostinger error pages)
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        setErrorMsg("Server error. Please email us directly at Paddy@gqmachine.com");
+        return;
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSuccess(true);
+      } else {
+        setErrorMsg(data.message || "Unable to send message. Please try again.");
+      }
+    } catch (err) {
+      setErrorMsg("Connection error. Please try again or email us at Paddy@gqmachine.com");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className={styles.contactSection} id="contact">
@@ -73,18 +93,7 @@ function ContactFormInner() {
                 </button>
               </div>
             ) : (
-              <form
-                className={styles.form}
-                action="https://formsubmit.co/Paddy@gqmachine.com"
-                method="POST"
-                encType="multipart/form-data"
-              >
-                {/* FormSubmit hidden config fields */}
-                <input type="hidden" name="_next" value={siteUrl} />
-                <input type="hidden" name="_subject" value="New Quote Request from Website" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-
+              <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
                     <label htmlFor="name" className={styles.inputLabel}>Full Name *</label>
@@ -129,13 +138,13 @@ function ContactFormInner() {
                         <>
                           <CheckCircle size={32} className={styles.uploadIcon} style={{ color: "#16a34a" }} />
                           <span className={styles.uploadTextMain}>{fileName}</span>
-                          <span className={styles.uploadTextSub}>File selected. Click again to change.</span>
+                          <span className={styles.uploadTextSub}>File(s) selected. Click again to change.</span>
                         </>
                       ) : (
                         <>
                           <UploadCloud size={32} className={styles.uploadIcon} />
                           <span className={styles.uploadTextMain}>Click to upload or drag and drop</span>
-                          <span className={styles.uploadTextSub}>Any file type accepted (Max 5MB per file)</span>
+                          <span className={styles.uploadTextSub}>Any file type accepted. Multiple files allowed.</span>
                         </>
                       )}
                     </div>
@@ -153,9 +162,15 @@ function ContactFormInner() {
                     placeholder="https://drive.google.com/... or https://we.tl/..."
                   />
                   <span style={{ fontSize: "0.8rem", color: "var(--color-text-secondary)", marginTop: "2px" }}>
-                    Recommended for large files or multiple CAD assemblies.
+                    Recommended for very large files or full CAD assemblies.
                   </span>
                 </div>
+
+                {errorMsg && (
+                  <div style={{ color: "#ef4444", backgroundColor: "#fef2f2", border: "1px solid #fca5a5", padding: "0.75rem 1rem", borderRadius: "4px", fontSize: "0.9rem", fontWeight: 600 }}>
+                    {errorMsg}
+                  </div>
+                )}
 
                 <div className={styles.privacyNotice}>
                   <ShieldCheck size={16} className={styles.privacyShieldIcon} />
@@ -168,8 +183,8 @@ function ContactFormInner() {
                   </span>
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  REQUEST A QUOTE <ArrowRight size={18} />
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? "SENDING..." : "REQUEST A QUOTE"} <ArrowRight size={18} />
                 </button>
               </form>
             )}
@@ -238,14 +253,5 @@ function ContactFormInner() {
         </div>
       </div>
     </section>
-  );
-}
-
-// Wrap with Suspense because useSearchParams requires it in Next.js
-export default function ContactForm() {
-  return (
-    <Suspense fallback={null}>
-      <ContactFormInner />
-    </Suspense>
   );
 }
